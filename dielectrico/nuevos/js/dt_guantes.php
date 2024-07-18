@@ -47,9 +47,9 @@ $(document).ready(function() {
             data: null,
             render: function(data, type, row) {
                 var long = row
-                .longitud; // Suponiendo que "id" es la propiedad que contiene el valor de id_orden
+                    .longitud; // Suponiendo que "id" es la propiedad que contiene el valor de id_orden
                 var clase = row
-                .clase; // Suponiendo que "nro_orden" es la propiedad que contiene el valor de nro_orden
+                    .clase; // Suponiendo que "nro_orden" es la propiedad que contiene el valor de nro_orden
                 var otro = row.otro;
                 if ((long == "280" && clase == "Clase 00") || (long == "280" && clase ==
                         "Clase 0")) {
@@ -102,9 +102,9 @@ $(document).ready(function() {
             data: null,
             render: function(data, type, row) {
                 var valor_izq = row
-                .valor_izq; // Suponiendo que "id" es la propiedad que contiene el valor de id_orden
+                    .valor_izq; // Suponiendo que "id" es la propiedad que contiene el valor de id_orden
                 var valor_der = row
-                .valor_der; // Suponiendo que "nro_orden" es la propiedad que contiene el valor de nro_orden
+                    .valor_der; // Suponiendo que "nro_orden" es la propiedad que contiene el valor de nro_orden
                 var otro = row.otro;
                 if (otro == "Inflado") {
                     return otro;
@@ -212,18 +212,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<script>
-ClassicEditor
-    .create(document.querySelector('#obs_edit'))
-    .then(editor => {
-        editor.model.document.on('change:data', () => {
-            document.querySelector('#contenido1').value = editor.getData();
-        });
-    })
-    .catch(error => {
-        console.error(error);
-    });
-</script>
+
 <script>
 function actualizarDatos() {
     fetch('https://api.thingspeak.com/channels/1748898/feeds.json?results=2')
@@ -260,7 +249,7 @@ $(document).ready(function() {
                 // Mostrar el enlace para descargar el ZIP
                 $('#downloadLink').html(
                     '<a href="pdfs/<?php echo $id_orden ?>_certificados.zip">Descargar ZIP de certificados</a>'
-                    );
+                );
             },
             error: function() {
                 // Ocultar el modal de espera en caso de error
