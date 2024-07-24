@@ -28,7 +28,7 @@ $(document).ready(function() {
         }, {
             "data": null,
             render: function(data, type, row) {
-                if (row.serie_guante === null) {
+                if (row.serie_guante == '' || row.serie_guante == null) {
                     return row.serie_edit;
                 } else {
                     return row.serie_guante;
@@ -151,7 +151,7 @@ $(document).ready(function() {
         var id = $(this).data('id');
         var rowData = $('#dataTable').DataTable().row($(this).closest('tr')).data();
 
-        if (rowData.serie_guante === null) {
+        if (rowData.serie_guante == '' || rowData.serie_guante == NULL) {
             var series = rowData.serie_edit
         } else {
             var series = rowData.serie_guante;
