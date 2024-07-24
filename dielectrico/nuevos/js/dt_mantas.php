@@ -28,7 +28,7 @@
             }, {
                 "data": null,
                 render: function(data, type, row) {
-                    if (row.serie_banqueta == '' || row.serie_banqueta == NULL) {
+                    if (row.serie_manta == '' || row.serie_manta == null) {
                         return row.serie_edit;
                     } else {
                         return row.serie_manta;
@@ -93,7 +93,7 @@
             var id = $(this).data('id');
             var rowData = $('#dataTable').DataTable().row($(this).closest('tr')).data();
 
-            if (rowData.serie_manta == '' || rowData.serie_manta == NULL) {
+            if (rowData.serie_manta == '' || rowData.serie_manta == null) {
                 var series = rowData.serie_edit
             } else {
                 var series = rowData.serie_manta;
