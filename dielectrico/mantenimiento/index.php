@@ -57,26 +57,31 @@ while ($fila = $resultado->fetch_assoc()) {
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
     <!-- Custom styles for this page -->
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css"
+        rel="stylesheet">
 
 </head>
 
 <style>
-    .mi-tabla {
-        font-size: 13px;
-        /* Ajusta el tamaño según lo necesites */
-    }
+.mi-tabla {
+    font-size: 13px;
+    /* Ajusta el tamaño según lo necesites */
+}
 
-    .btn-sm2 {
-        font-size: 13px;
-        padding: 0.5px 3px;
-    }
+.btn-sm2 {
+    font-size: 13px;
+    padding: 0.5px 3px;
+}
 </style>
 
 <datalist id="empresas">
@@ -123,7 +128,8 @@ while ($fila = $resultado->fetch_assoc()) {
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Aterramiento</span>
                 </a>
@@ -137,11 +143,13 @@ while ($fila = $resultado->fetch_assoc()) {
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item  active">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Dielectricos</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../nuevos/index.php">Nuevos</a>
                         <a class="collapse-item" href="index.php">Mantenimiento</a>
@@ -176,7 +184,8 @@ while ($fila = $resultado->fetch_assoc()) {
                         <div class="card-header py-3 ">
 
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
                                 Agregar
                             </button>
 
@@ -190,7 +199,8 @@ while ($fila = $resultado->fetch_assoc()) {
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%"
+                                    cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Acciones</th>
@@ -201,7 +211,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                             <th>Equipo</th>
                                             <th>Salida</th>
                                             <th>Estado</th>
-                                            <th>Vendedor</th>
+
                                             <th>Items</th>
                                         </tr>
                                     </thead>
@@ -215,7 +225,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                             <th>Equipo</th>
                                             <th>Salida</th>
                                             <th>Estado</th>
-                                            <th>Vendedor</th>
+
                                             <th>Items</th>
 
                                         </tr>
@@ -256,7 +266,8 @@ while ($fila = $resultado->fetch_assoc()) {
 
     <!-- Bootstrap core JavaScript-->
     <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
 
     <!-- Core plugin JavaScript-->
@@ -268,102 +279,102 @@ while ($fila = $resultado->fetch_assoc()) {
     <!-- Page level plugins-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js">
+    <script
+        src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js">
     </script>
 
     <script>
-        $(document).ready(function() {
-            $("#dataTable").DataTable({
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json",
-                },
-                "ajax": {
-                    "url": "obtener_datos.php",
-                    "method": "POST",
-                    "data": ""
-                },
-                columns: [{
-                    data: null,
-                    render: function(data, type, row) {
-                        return '<a class="btn btn-primary btn-sm2" href="orden.php?id=' + row
-                            .id +
-                            '">Abrir</a>  <button class="btn btn-danger btn-sm2" onclick="borrar(' +
-                            row.id + ')">Borrar</button>';
+    $(document).ready(function() {
+        $("#dataTable").DataTable({
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json",
+            },
+            "ajax": {
+                "url": "obtener_datos.php",
+                "method": "POST",
+                "data": ""
+            },
+            columns: [{
+                data: null,
+                render: function(data, type, row) {
+                    return '<a class="btn btn-primary btn-sm2" href="orden.php?id=' + row
+                        .id +
+                        '">Abrir</a>  <button class="btn btn-danger btn-sm2" onclick="borrar(' +
+                        row.id + ')">Borrar</button>';
 
+                }
+            }, {
+                "data": "id"
+            }, {
+                "data": "fecha"
+            }, {
+                "data": "cliente"
+            }, {
+                "data": "ruc"
+            }, {
+                "data": "equipo"
+            }, {
+                "data": "salida"
+            }, {
+                "data": null,
+                render: function(data, type, row) {
+                    if (row.estado == "Pendiente") {
+                        return "<span class='alert-warning'>Pendiente</span>"
                     }
-                }, {
-                    "data": "id"
-                }, {
-                    "data": "fecha"
-                }, {
-                    "data": "cliente"
-                }, {
-                    "data": "ruc"
-                }, {
-                    "data": "equipo"
-                }, {
-                    "data": "salida"
-                }, {
-                    "data": null,
-                    render: function(data, type, row) {
-                        if (row.estado == "Pendiente") {
-                            return "<span class='alert-warning'>Pendiente</span>"
-                        }
-                        if (row.estado == "Entregado") {
-                            return "<span class='alert-success'>Entregado</span>"
-                        }
-                        if (row.estado == "Anulado") {
-                            return "<span class='alert-danger'>Anulado</span>"
-                        }
-                        if (row.estado == "Evaluado") {
-                            return "<span class='alert-primary'>Evaluado</span>"
-                        }
+                    if (row.estado == "Entregado") {
+                        return "<span class='alert-success'>Entregado</span>"
                     }
-                }, {
-                    "data": "vendedor"
-                }, {
-                    "data": "items"
-                }],
-                order: [
-                    [1, 'desc']
-                ]
+                    if (row.estado == "Anulado") {
+                        return "<span class='alert-danger'>Anulado</span>"
+                    }
+                    if (row.estado == "Evaluado") {
+                        return "<span class='alert-primary'>Evaluado</span>"
+                    }
+                }
+            }, {
+                "data": "items"
+            }],
+            order: [
+                [1, 'desc']
+            ]
 
-            });
         });
+    });
     </script>
     <script>
-        function borrar(id) {
-            // Mostrar el modal de confirmación
-            $('#confirmarBorradoModal').modal('show');
+    function borrar(id) {
+        // Mostrar el modal de confirmación
+        $('#confirmarBorradoModal').modal('show');
 
-            // Cuando se hace clic en el botón de "Borrar" en el modal, enviar la solicitud al servidor para eliminar los datos
-            $('#confirmarBorradoBtn').on('click', function() {
-                $.ajax({
-                    url: 'procesar.php?funcion=eliminar_orden',
-                    type: 'POST',
-                    data: {
-                        id: id
-                    },
-                    success: function(response) {
-                        // Manejar la respuesta del servidor si es necesario
-                        console.log(response);
-                        //recargo la pagina
-                        location.reload();
-                    },
-                    error: function(xhr, status, error) {
-                        // Manejar errores si los hay
-                        console.log(error);
-                    }
-                });
-
-                // Ocultar el modal de confirmación
-                $('#confirmarBorradoModal').modal('hide');
+        // Cuando se hace clic en el botón de "Borrar" en el modal, enviar la solicitud al servidor para eliminar los datos
+        $('#confirmarBorradoBtn').on('click', function() {
+            $.ajax({
+                url: 'procesar.php?funcion=eliminar_orden',
+                type: 'POST',
+                data: {
+                    id: id
+                },
+                success: function(response) {
+                    // Manejar la respuesta del servidor si es necesario
+                    console.log(response);
+                    //recargo la pagina
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    // Manejar errores si los hay
+                    console.log(error);
+                }
             });
-        }
+
+            // Ocultar el modal de confirmación
+            $('#confirmarBorradoModal').modal('hide');
+        });
+    }
     </script>
 
     <!-- Modal -->
-    <div class="modal fade" id="confirmarBorradoModal" tabindex="-1" role="dialog" aria-labelledby="confirmarBorradoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="confirmarBorradoModal" tabindex="-1" role="dialog"
+        aria-labelledby="confirmarBorradoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -399,14 +410,17 @@ while ($fila = $resultado->fetch_assoc()) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Cliente</span>
                             </div>
-                            <input type="text" class="form-control" name="empresa" list="empresas" placeholder="Buscar por empresa o ruc" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" name="empresa" list="empresas"
+                                placeholder="Buscar por empresa o ruc" aria-label="Username"
+                                aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Equipo</span>
                             </div>
 
-                            <select class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="equipo">
+                            <select class="form-control" aria-label="Username" aria-describedby="basic-addon1"
+                                name="equipo">
                                 <option value="Guantes">Guantes</option>
                                 <option value="Mantas">Mantas</option>
                                 <option value="Banquetas">Banquetas</option>
@@ -414,12 +428,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                 <option value="Mangas">Mangas</option>
                             </select>
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Vendedor</span>
-                            </div>
-                            <input type="text" class="form-control" name="vendedor" list="empleados" placeholder="Buscar por nombre" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
+
 
                         <input type="hidden" value="Pendiente" name="estado">
                         <input type="hidden" value="0" name="items">

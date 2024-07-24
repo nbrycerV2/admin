@@ -7,7 +7,7 @@
             <th>Clase</th>
             <th>Marca</th>
             <th>Longitud</th>
-            <th>Talla</th>
+
             <th>Corriente Max (mA)</th>
             <th>Corriente Medida (mA)</th>
             <th>Resultado</th>
@@ -22,7 +22,7 @@
             <th>Clase</th>
             <th>Marca</th>
             <th>Longitud</th>
-            <th>Talla</th>
+
             <th>Corriente Max (mA)</th>
             <th>Corriente Medida (mA)</th>
             <th>Resultado</th>
