@@ -22,14 +22,12 @@ db_url = f"mysql+pymysql://{db_config['user']}:{
 def get_data_from_db(query):
     engine = create_engine(db_url)
     data = pd.read_sql(query, engine)
-    print(data.head())
     return data
 
 
 def get_monthly_data(query):
     engine = create_engine(db_url)
     data = pd.read_sql(query, engine)
-    print(data.head())
     return data
 
 
