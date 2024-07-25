@@ -30,13 +30,7 @@
                                             name="clase00">
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Talla</span>
-                                        <input type="text" class="form-control" list="tallas" placeholder="Talla"
-                                            name="talla00">
-                                    </div>
-                                </td>
+
                             </tr>
                             <tr>
                                 <td>
@@ -62,13 +56,7 @@
                                             name="clase1">
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Talla</span>
-                                        <input type="text" class="form-control" list="tallas" placeholder="Talla"
-                                            name="talla1">
-                                    </div>
-                                </td>
+
                             </tr>
                             <tr>
                                 <td>
@@ -78,13 +66,7 @@
                                             name="clase2">
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Talla</span>
-                                        <input type="text" class="form-control" list="tallas" placeholder="Talla"
-                                            name="talla2">
-                                    </div>
-                                </td>
+
                             </tr>
                             <tr>
                                 <td>
@@ -94,13 +76,7 @@
                                             name="clase3">
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Talla</span>
-                                        <input type="text" class="form-control" list="tallas" placeholder="Talla"
-                                            name="talla3">
-                                    </div>
-                                </td>
+
                             </tr>
                             <tr>
                                 <td>
@@ -110,13 +86,7 @@
                                             name="clase4">
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Talla</span>
-                                        <input type="text" class="form-control" list="tallas" placeholder="Talla"
-                                            name="talla4">
-                                    </div>
-                                </td>
+
                             </tr>
 
                         </tbody>
@@ -395,7 +365,7 @@
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Fecha del
                                                 Informe</span>
                                             <input type="date" class="form-control" name="fecha_inf"
-                                                value="<?php echo $fecha_inf;?>">
+                                                value="<?php echo $fecha_inf; ?>">
                                         </div>
                                     </td>
                                 </tr>
@@ -404,14 +374,14 @@
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Temperatura</span>
                                             <input type="text" class="form-control" id="temperatura_informe"
-                                                name="temperatura_informe" value="<?php echo $temperatura;?>">
+                                                name="temperatura_informe" value="<?php echo $temperatura; ?>">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Humedad</span>
                                             <input type="text" class="form-control" name="humedad_informe"
-                                                id="humedad_informe" value="<?php echo $humedad;?>">
+                                                id="humedad_informe" value="<?php echo $humedad; ?>">
                                         </div>
                                     </td>
                                 </tr>
