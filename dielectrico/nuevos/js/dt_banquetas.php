@@ -28,7 +28,7 @@ $(document).ready(function() {
         }, {
             "data": null,
             render: function(data, type, row) {
-                if (row.serie_banqueta == '' || row.serie_banqueta == NULL) {
+                if (row.serie_banqueta == '' || row.serie_banqueta == null) {
                     return row.serie_edit;
                 } else {
                     return row.serie_banqueta;
@@ -93,7 +93,7 @@ $(document).ready(function() {
         var id = $(this).data('id');
         var rowData = $('#dataTable').DataTable().row($(this).closest('tr')).data();
 
-        if (rowData.serie_banqueta == '' || rowData.serie_banqueta == NULL) {
+        if (rowData.serie_banqueta == '' || rowData.serie_banqueta == null) {
             var series = rowData.serie_edit
         } else {
             var series = rowData.serie_banqueta;

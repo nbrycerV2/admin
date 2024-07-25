@@ -169,13 +169,18 @@ $listaPertigas = generarListaPertigas($conexion);
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
     <!-- Custom styles for this page -->
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css"
+        rel="stylesheet">
 
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
@@ -183,25 +188,25 @@ $listaPertigas = generarListaPertigas($conexion);
 </head>
 
 <style>
-    .mi-tabla {
-        font-size: 13px;
-        /* Ajusta el tamaño según lo necesites */
-    }
+.mi-tabla {
+    font-size: 13px;
+    /* Ajusta el tamaño según lo necesites */
+}
 
-    .btn-sm2 {
-        font-size: 13px;
-        padding: 0.5px 3px;
-    }
+.btn-sm2 {
+    font-size: 13px;
+    padding: 0.5px 3px;
+}
 
-    #displayValue {
-        float: right;
-        text-align: right;
-        /*font-size: 50px;*/
-        width: 70%;
-        margin-right: 15%;
-        font-weight: bold;
-        outline-offset: 5px
-    }
+#displayValue {
+    float: right;
+    text-align: right;
+    /*font-size: 50px;*/
+    width: 70%;
+    margin-right: 15%;
+    font-weight: bold;
+    outline-offset: 5px
+}
 </style>
 
 <datalist id="empresas">
@@ -264,7 +269,8 @@ $listaPertigas = generarListaPertigas($conexion);
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Aterramiento</span>
                 </a>
@@ -278,11 +284,13 @@ $listaPertigas = generarListaPertigas($conexion);
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item  active">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Dielectricos</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-bs-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-bs-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../nuevos/index.php">Nuevos</a>
                         <a class="collapse-item" href="index.php">Mantenimiento</a>
@@ -331,7 +339,8 @@ $listaPertigas = generarListaPertigas($conexion);
                                         <thead class="">
                                             <tr>
                                                 <th>Informacion general</th>
-                                                <th><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal" data-bs-target="#edit_orden">Editar</button></th>
+                                                <th><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#edit_orden">Editar</button></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -343,10 +352,7 @@ $listaPertigas = generarListaPertigas($conexion);
                                                 <td>Ruc</td>
                                                 <td><?php echo $ruc; ?></td>
                                             </tr>
-                                            <tr>
-                                                <td>Vendedor</td>
-                                                <td><?php echo $vendedor; ?></td>
-                                            </tr>
+
                                             <tr>
                                                 <td>Fecha de creacion</td>
                                                 <td><?php echo $fecha_creacion; ?></td>
@@ -406,10 +412,13 @@ $listaPertigas = generarListaPertigas($conexion);
                                     <table>
                                         <thead>
                                             <tr>
-                                                <td><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal" data-bs-target="#agregar_item">Agregar Item</button></td>
-                                                <td><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal" data-bs-target="#datos_informe">Datos para el Informe</button>
+                                                <td><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#agregar_item">Agregar Item</button></td>
+                                                <td><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#datos_informe">Datos para el Informe</button>
                                                 </td>
-                                                <td><a class="btn btn-sm2 btn-secondary" href="procesar.php?id_orden=<?php echo $id_orden ?>&equipo=<?php echo $equipo ?>&funcion=agrego_series">Generar
+                                                <td><a class="btn btn-sm2 btn-secondary"
+                                                        href="procesar.php?id_orden=<?php echo $id_orden ?>&equipo=<?php echo $equipo ?>&funcion=agrego_series">Generar
                                                         serie a todos los Items</a></td>
                                                 <td><a class="btn btn-sm2 btn-secondary" id="generarPDFs">Descargar
                                                         todos los Informes</a></td>
@@ -470,7 +479,8 @@ $listaPertigas = generarListaPertigas($conexion);
 
     <!-- Bootstrap core JavaScript-->
     <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
 
     <!-- Core plugin JavaScript-->
@@ -481,7 +491,8 @@ $listaPertigas = generarListaPertigas($conexion);
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js">
+    <script
+        src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js">
     </script>
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
 
@@ -504,34 +515,34 @@ $listaPertigas = generarListaPertigas($conexion);
     ?>
 
     <script>
-        function borrar(id) {
-            // Mostrar el modal de confirmación
-            $('#confirmarBorradoModal').modal('show');
+    function borrar(id) {
+        // Mostrar el modal de confirmación
+        $('#confirmarBorradoModal').modal('show');
 
-            // Cuando se hace clic en el botón de "Borrar" en el modal, enviar la solicitud al servidor para eliminar los datos
-            $('#confirmarBorradoBtn').on('click', function() {
-                $.ajax({
-                    url: 'procesar.php?funcion=borro_items',
-                    type: 'POST',
-                    data: {
-                        id: id
-                    },
-                    success: function(response) {
-                        // Manejar la respuesta del servidor si es necesario
-                        console.log(response);
-                        //recargo la pagina
-                        location.reload();
-                    },
-                    error: function(xhr, status, error) {
-                        // Manejar errores si los hay
-                        console.log(error);
-                    }
-                });
-
-                // Ocultar el modal de confirmación
-                $('#confirmarBorradoModal').modal('hide');
+        // Cuando se hace clic en el botón de "Borrar" en el modal, enviar la solicitud al servidor para eliminar los datos
+        $('#confirmarBorradoBtn').on('click', function() {
+            $.ajax({
+                url: 'procesar.php?funcion=borro_items',
+                type: 'POST',
+                data: {
+                    id: id
+                },
+                success: function(response) {
+                    // Manejar la respuesta del servidor si es necesario
+                    console.log(response);
+                    //recargo la pagina
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    // Manejar errores si los hay
+                    console.log(error);
+                }
             });
-        }
+
+            // Ocultar el modal de confirmación
+            $('#confirmarBorradoModal').modal('hide');
+        });
+    }
     </script>
 
     <!-- Modal -->
@@ -553,7 +564,8 @@ $listaPertigas = generarListaPertigas($conexion);
     ?>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- Modal borrar-->
-    <div class="modal fade" id="confirmarBorradoModal" tabindex="-1" role="dialog" aria-labelledby="confirmarBorradoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="confirmarBorradoModal" tabindex="-1" role="dialog"
+        aria-labelledby="confirmarBorradoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

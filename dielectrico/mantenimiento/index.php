@@ -174,7 +174,7 @@ while ($fila = $resultado->fetch_assoc()) {
             <div id="content">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <h1 class="h3 mb-0 text-gray-800">Dielectricos Nuevos</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Dielectricos Mantenimiento</h1>
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
@@ -211,7 +211,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                             <th>Equipo</th>
                                             <th>Salida</th>
                                             <th>Estado</th>
-                                            <th>Vendedor</th>
+
                                             <th>Items</th>
                                         </tr>
                                     </thead>
@@ -225,7 +225,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                             <th>Equipo</th>
                                             <th>Salida</th>
                                             <th>Estado</th>
-                                            <th>Vendedor</th>
+
                                             <th>Items</th>
 
                                         </tr>
@@ -332,8 +332,6 @@ while ($fila = $resultado->fetch_assoc()) {
                     }
                 }
             }, {
-                "data": "vendedor"
-            }, {
                 "data": "items"
             }],
             order: [
@@ -430,13 +428,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                 <option value="Mangas">Mangas</option>
                             </select>
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Vendedor</span>
-                            </div>
-                            <input type="text" class="form-control" name="vendedor" list="empleados"
-                                placeholder="Buscar por nombre" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
+
 
                         <input type="hidden" value="Pendiente" name="estado">
                         <input type="hidden" value="0" name="items">
