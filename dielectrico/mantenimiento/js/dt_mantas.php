@@ -119,6 +119,8 @@
 
             // Llena los campos del formulario con los valores de la fila
             $('#id_item_obs').val(id);
+            $('#floatingTextarea2').val(rowData.obs);
+
 
             // Abre el modal
             $('#obsModal').modal('show');

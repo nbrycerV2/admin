@@ -195,20 +195,22 @@
                 <h5 class="modal-title">Modal title</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-                <input type="hidden" name="id_item" id="id_item_obs">
+            <form action="procesar.php?funcion=observacion" method="post">
+                <div class="modal-body">
 
-                <div id="obs_edit" name="obs_edit">
-
+                    <input type="hidden" name="id_item" id="id_item_obs">
+                    <input type="hidden" name="id_orden" value="<?php echo $id_orden; ?>">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="obs"></textarea>
+                        <label for="floatingTextarea2">Comentarios</label>
+                    </div>
                 </div>
-                <input type="hidden" id="contenido1" name="contenido1">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar Cambios</button>
-            </div>
         </div>
     </div>
 </div>
@@ -265,7 +267,8 @@
                                     </td>
                                     <td>
                                         <div class="input-group input-group-sm mb-3">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de Salida</span>
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de
+                                                Salida</span>
                                             <input type="date" class="form-control" value="<?php echo $salida; ?>" name="salida" id="">
                                         </div>
                                     </td>
@@ -300,8 +303,9 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="input-group input-group-sm mb-3">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">Fecha del Informe</span>
-                                            <input type="date" class="form-control" name="fecha_inf" value="<?php echo $fecha_inf;?>">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Fecha del
+                                                Informe</span>
+                                            <input type="date" class="form-control" name="fecha_inf" value="<?php echo $fecha_inf; ?>">
                                         </div>
                                     </td>
                                 </tr>
@@ -309,13 +313,13 @@
                                     <td>
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Temperatura</span>
-                                            <input type="text" class="form-control" id="temperatura_informe" name="temperatura_informe" value="<?php echo $temperatura;?>">
+                                            <input type="text" class="form-control" id="temperatura_informe" name="temperatura_informe" value="<?php echo $temperatura; ?>">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Humedad</span>
-                                            <input type="text" class="form-control" name="humedad_informe" id="humedad_informe" value="<?php echo $humedad;?>">
+                                            <input type="text" class="form-control" name="humedad_informe" id="humedad_informe" value="<?php echo $humedad; ?>">
                                         </div>
                                     </td>
                                 </tr>
