@@ -173,6 +173,8 @@
 
             // Llena los campos del formulario con los valores de la fila
             $('#id_item_obs').val(id);
+            $('#floatingTextarea2').val(rowData.obs);
+
 
             // Abre el modal
             $('#obsModal').modal('show');
@@ -207,18 +209,6 @@
     });
 </script>
 
-<script>
-    ClassicEditor
-        .create(document.querySelector('#obs_edit'))
-        .then(editor => {
-            editor.model.document.on('change:data', () => {
-                document.querySelector('#contenido1').value = editor.getData();
-            });
-        })
-        .catch(error => {
-            console.error(error);
-        });
-</script>
 <script>
     function actualizarDatos() {
         fetch('https://api.thingspeak.com/channels/1748898/feeds.json?results=2')

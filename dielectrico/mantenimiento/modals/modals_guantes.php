@@ -255,8 +255,8 @@
             <form action="procesar.php?funcion=observacion" method="post">
                 <div class="modal-body">
 
-                    <input name="id_item" id="id_item_obs">
-                    <input name="id_orden" value="<?php echo $id_orden; ?>">
+                    <input type="hidden" name="id_item" id="id_item_obs">
+                    <input type="hidden" name="id_orden" value="<?php echo $id_orden; ?>">
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
                             style="height: 100px" name="obs"></textarea>
