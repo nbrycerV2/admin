@@ -18,7 +18,8 @@
                                 <td>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Modelo</span>
-                                        <input class="form-control" list="lista_pertigas" placeholder="Modelo" name="marca">
+                                        <input class="form-control" list="lista_pertigas" placeholder="Modelo"
+                                            name="marca">
                                     </div>
                                 </td>
                             </tr>
@@ -26,7 +27,8 @@
                                 <td>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Cantidad</span>
-                                        <input type="number" min="0" class="form-control" placeholder="Cantidad" name="clase00">
+                                        <input type="number" min="0" class="form-control" placeholder="Cantidad"
+                                            name="clase00">
                                     </div>
                                 </td>
                             </tr>
@@ -44,7 +46,8 @@
 </div>
 
 <!-- Modal Editar-->
-<div id="editarModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel" aria-hidden="true">
+<div id="editarModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -64,13 +67,15 @@
                                 <td>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Nº Informe</span>
-                                        <input type="text" class="form-control" placeholder="Nº Informe" id="n_informe" name="n_informe" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="Nº Informe" id="n_informe"
+                                            name="n_informe" aria-describedby="basic-addon1">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Serie</span>
-                                        <input type="text" class="form-control" placeholder="Serie" id="serie" name="serie" aria-label="Username" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="Serie" id="serie"
+                                            name="serie" aria-label="Username" aria-describedby="basic-addon1">
                                     </div>
                                 </td>
                             </tr>
@@ -78,13 +83,15 @@
                                 <td>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Modelo</span>
-                                        <input type="text" class="form-control" placeholder="Modelo" name="clase" id="clase" aria-describedby="instert-modelo">
+                                        <input type="text" class="form-control" placeholder="Modelo" name="clase"
+                                            id="clase" aria-describedby="instert-modelo">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Marca</span>
-                                        <input type="text" class="form-control" placeholder="Marca" name="marca" id="marca" list="marca_lista" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="Marca" name="marca"
+                                            id="marca" list="marca_lista" aria-describedby="basic-addon1">
                                     </div>
                                 </td>
                             </tr>
@@ -92,14 +99,17 @@
                                 <td>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Cuerpos</span>
-                                        <input type="text" class="form-control" placeholder="Corriente" name="talla" id="talla" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="Corriente" name="talla"
+                                            id="talla" aria-describedby="basic-addon1">
 
                                     </div>
                                 </td>
                                 <td>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Resultado</span>
-                                        <select type="text" class="form-control" name="resultados" id="resultados" placeholder="Resultado" aria-label="Username" aria-describedby="basic-addon1">
+                                        <select type="text" class="form-control" name="resultados" id="resultados"
+                                            placeholder="Resultado" aria-label="Username"
+                                            aria-describedby="basic-addon1">
                                             <option value="Apto">Apto</option>
                                             <option value="No Apto">No Apto</option>
                                             <option value="Pendiente">Pendiente</option>
@@ -164,7 +174,8 @@
                                     <td colspan="2">
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Empresa</span>
-                                            <input type="text" class="form-control" value="<?php echo $cliente; ?>" name="cliente" id="clienteInput">
+                                            <input type="text" class="form-control" value="<?php echo $cliente; ?>"
+                                                name="cliente" id="clienteInput">
                                         </div>
                                     </td>
                                 </tr>
@@ -172,13 +183,15 @@
                                     <td>
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Ruc</span>
-                                            <input type="text" class="form-control" value="<?php echo $ruc; ?>" name="ruc" id="rucInput">
+                                            <input type="text" class="form-control" value="<?php echo $ruc; ?>"
+                                                name="ruc" id="rucInput">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Vendedor</span>
-                                            <input type="text" class="form-control" name="vendedor" list="empleados" value="<?php echo $vendedor; ?>">
+                                            <input type="text" class="form-control" name="vendedor" list="empleados"
+                                                value="<?php echo $vendedor; ?>">
                                         </div>
                                     </td>
                                 </tr>
@@ -200,7 +213,8 @@
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de
                                                 Salida</span>
-                                            <input type="date" class="form-control" value="<?php echo $salida; ?>" name="salida" id="">
+                                            <input type="date" class="form-control" value="<?php echo $salida; ?>"
+                                                name="salida" id="">
                                         </div>
                                     </td>
                                 </tr>
@@ -236,7 +250,8 @@
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Fecha del
                                                 Informe</span>
-                                            <input type="date" class="form-control" name="fecha_inf" value="<?php echo $fecha_inf; ?>">
+                                            <input type="date" class="form-control" name="fecha_inf"
+                                                value="<?php echo $fecha_inf; ?>">
                                         </div>
                                     </td>
                                 </tr>
@@ -244,13 +259,15 @@
                                     <td>
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Temperatura</span>
-                                            <input type="text" class="form-control" id="temperatura_informe" name="temperatura_informe" value="<?php echo $temperatura; ?>">
+                                            <input type="text" class="form-control" id="temperatura_informe"
+                                                name="temperatura_informe" value="<?php echo $temperatura; ?>">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm">Humedad</span>
-                                            <input type="text" class="form-control" name="humedad_informe" id="humedad_informe" value="<?php echo $humedad; ?>">
+                                            <input type="text" class="form-control" name="humedad_informe"
+                                                id="humedad_informe" value="<?php echo $humedad; ?>">
                                         </div>
                                     </td>
                                 </tr>

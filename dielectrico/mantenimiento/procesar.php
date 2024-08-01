@@ -2361,3 +2361,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
         rename($archivo_zip, __DIR__ . '/pdfs/' . $archivo_zip);
     }
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST' and $funcion == "observacion") {
+    $id_orden = $_POST["id_orden"];
+    $id_item = $_POST["id_item"];
+    $obs = $_POST["obs"];
+
+    $consultaUpdate = "UPDATE orden_item_m SET obs = '$obs' WHERE id = '$id_item'";
+    if (mysqli_query($conexion, $consultaUpdate)) {
+        echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . mysqli_error($conexion);
+    }
+
+    header("Location:orden.php?id=$id_orden");
+}
