@@ -17,8 +17,10 @@
             columns: [{
                 data: null,
                 render: function(data, type, row) {
-                    return '<button class="btn btn-primary btn-sm2 editar-btn" data-id="' + row.id + '">Editar</button>' +
-                        '  <button class="btn btn-danger btn-sm2" onclick="borrar(' + row.id + ')">Borrar</button>' +
+                    return '<button class="btn btn-primary btn-sm2 editar-btn" data-id="' + row
+                        .id + '">Editar</button>' +
+                        '  <button class="btn btn-danger btn-sm2" onclick="borrar(' + row.id +
+                        ')">Borrar</button>' +
                         '<label hidden>' + row.id + '</label>';
                 }
             }, {
@@ -26,7 +28,7 @@
             }, {
                 "data": null,
                 render: function(data, type, row) {
-                    if (row.serie_manta === null) {
+                    if (row.serie_manta === null || row.serie_manta === '') {
                         return row.serie_edit;
                     } else {
                         return row.serie_manta;
@@ -69,7 +71,8 @@
             }, {
                 "data": null,
                 render: function(data, type, row) {
-                    return '<button class="btn btn-primary btn-sm2 obs-btn" data-id="' + row.id + '">Observaciones</button>';
+                    return '<button class="btn btn-primary btn-sm2 obs-btn" data-id="' + row
+                        .id + '">Observaciones</button>';
                 }
             }],
             order: [
@@ -90,7 +93,7 @@
             var id = $(this).data('id');
             var rowData = $('#dataTable').DataTable().row($(this).closest('tr')).data();
 
-            if (rowData.serie_manta === null) {
+            if (rowData.serie_manta === null || rowData.serie_manta === '') {
                 var series = rowData.serie_edit
             } else {
                 var series = rowData.serie_manta;
@@ -132,7 +135,8 @@
 
         clienteInput.addEventListener("change", function() {
             const selectedCliente = clienteInput.value;
-            const option = Array.from(rucInput.children).find(option => option.textContent === selectedCliente);
+            const option = Array.from(rucInput.children).find(option => option.textContent ===
+                selectedCliente);
             if (option) {
                 rucInput.value = option.value;
             }
@@ -140,7 +144,8 @@
 
         rucInput.addEventListener("change", function() {
             const selectedRuc = rucInput.value;
-            const option = Array.from(clienteInput.children).find(option => option.textContent === selectedRuc);
+            const option = Array.from(clienteInput.children).find(option => option.textContent ===
+                selectedRuc);
             if (option) {
                 clienteInput.value = option.value;
             }
@@ -195,7 +200,9 @@
                     // Mostrar el modal de descarga
                     $('#downloadModal').modal('show');
                     // Mostrar el enlace para descargar el ZIP
-                    $('#downloadLink').html('<a href="pdfs/<?php echo $id_orden ?>_certificados.zip">Descargar ZIP de certificados</a>');
+                    $('#downloadLink').html(
+                        '<a href="pdfs/<?php echo $id_orden ?>_certificados.zip">Descargar ZIP de certificados</a>'
+                    );
                 },
                 error: function() {
                     // Ocultar el modal de espera en caso de error
