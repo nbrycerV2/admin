@@ -102,6 +102,30 @@ function countItemsByMarcaAndYear($conexion, $selectedYear, $equipo)
 
     return $output;
 }
+function countItemsByVendedorAndYear($conexion, $selectedYear, $equipo)
+{
+
+    // Consulta para contar los items por clase "Guantes" y año específico
+    $sql = "SELECT vendedor, COUNT(*) AS count_items FROM orden_item WHERE equipo = $equipo AND YEAR(fecha) = $selectedYear GROUP BY vendedor";
+
+    $result = $conexion->query($sql);
+
+    $output = "";
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $clase = $row["vendedor"];
+            $count = $row["count_items"];
+
+            $output .= "<tr>
+                            <td>$clase</td>
+                            <td>$count</td>
+                        </tr>";
+        }
+    }
+
+    return $output;
+}
 
 // Consulta SQL para obtener los datos
 $query = "SELECT equipo, clase, COUNT(*) as cantidad FROM orden_item WHERE YEAR(fecha) = $selectedYear GROUP BY equipo, clase";
@@ -131,25 +155,30 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
     <!-- Custom styles for this page -->
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css"
+        rel="stylesheet">
 </head>
 
 <style>
-    .mi-tabla {
-        font-size: 13px;
-        /* Ajusta el tamaño según lo necesites */
-    }
+.mi-tabla {
+    font-size: 13px;
+    /* Ajusta el tamaño según lo necesites */
+}
 
-    .btn-sm2 {
-        font-size: 13px;
-        padding: 0.5px 3px;
-    }
+.btn-sm2 {
+    font-size: 13px;
+    padding: 0.5px 3px;
+}
 </style>
 
 <body id="page-top">
@@ -189,7 +218,8 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Aterramiento</span>
                 </a>
@@ -203,11 +233,13 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item  active">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Dielectricos</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-bs-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-bs-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="index.php">Nuevos</a>
                         <a class="collapse-item" href="../mantenimiento/index.php">Mantenimiento</a>
@@ -304,13 +336,13 @@ while ($row = mysqli_fetch_assoc($resultado)) {
                                     </thead>
                                     <tbody>
                                         <?php foreach ($equipos as $equipo) : ?>
-                                            <tr>
-                                                <td><?php echo $equipo; ?></td>
-                                                <?php foreach ($datosPorEquipo[$equipo] as $cantidad) : ?>
-                                                    <td><?php echo $cantidad; ?></td>
-                                                <?php endforeach; ?>
-                                                <td><?php echo $totalesPorEquipo[$equipo]; ?></td>
-                                            </tr>
+                                        <tr>
+                                            <td><?php echo $equipo; ?></td>
+                                            <?php foreach ($datosPorEquipo[$equipo] as $cantidad) : ?>
+                                            <td><?php echo $cantidad; ?></td>
+                                            <?php endforeach; ?>
+                                            <td><?php echo $totalesPorEquipo[$equipo]; ?></td>
+                                        </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
@@ -320,7 +352,8 @@ while ($row = mysqli_fetch_assoc($resultado)) {
                     <div class="row">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Accordion -->
-                            <a href="#collapseCardtabla" class="d-block card-header py-3" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                            <a href="#collapseCardtabla" class="d-block card-header py-3" data-bs-toggle="collapse"
+                                role="button" aria-expanded="true" aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-primary">Resumen en Tablas</h6>
                             </a>
                             <!-- Card Content - Collapse -->
@@ -392,63 +425,21 @@ while ($row = mysqli_fetch_assoc($resultado)) {
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <h5>Tabla Por Empresa</h5>
-                                        <div class="col">Guantes
+
+                                        <div class="col">Mangas
                                             <table class="table table-bordered table-sm mi-tabla">
                                                 <thead>
                                                     <tr>
-                                                        <th>Empresa</th>
+                                                        <th>Clase</th>
                                                         <th>Total</th>
                                                     </tr>
                                                 </thead>
-                                                <?php
-                                                $output5 = countItemsByClientAndYear($conexion, $selectedYear, "'Guantes'");
-                                                echo $output5;
-                                                ?>
-                                            </table>
-                                        </div>
-                                        <div class="col">Mantas
-                                            <table class="table table-bordered table-sm mi-tabla">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Empresa</th>
-                                                        <th>Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <?php
-                                                $output6 = countItemsByClientAndYear($conexion, $selectedYear, "'Mantas'");
-                                                echo $output6;
-                                                ?>
-                                            </table>
-                                        </div>
-                                        <div class="col">Banquetas
-                                            <table class="table table-bordered table-sm mi-tabla">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Empresa</th>
-                                                        <th>Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <?php
-                                                $output7 = countItemsByClientAndYear($conexion, $selectedYear, "'Banquetas'");
-                                                echo $output7;
-                                                ?>
-                                            </table>
-                                        </div>
-                                        <div class="col">Pertigas
-                                            <table class="table table-bordered table-sm mi-tabla">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Empresa</th>
-                                                        <th>Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <?php
-                                                $output8 = countItemsByClientAndYear($conexion, $selectedYear, "'Pertigas'");
-                                                echo $output8;
-                                                ?>
+                                                <tbody>
+                                                    <?php
+                                                    $output4 = countItemsByClassAndYear($conexion, $selectedYear, "'Mangas'");
+                                                    echo $output4;
+                                                    ?>
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -510,7 +501,168 @@ while ($row = mysqli_fetch_assoc($resultado)) {
                                                 ?>
                                             </table>
                                         </div>
+                                        <div class="col">Mangas
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Marca</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output5 = countItemsByMarcaAndYear($conexion, $selectedYear, "'Mangas'");
+                                                echo $output5;
+                                                ?>
+                                            </table>
+                                        </div>
                                     </div>
+                                    <div class="row">
+                                        <h5>Tabla Por Vendedor</h5>
+                                        <div class="col">Guantes
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Vendedor</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output5 = countItemsByVendedorAndYear($conexion, $selectedYear, "'Guantes'");
+                                                echo $output5;
+                                                ?>
+                                            </table>
+                                        </div>
+                                        <div class="col">Mantas
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Vendedor</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output5 = countItemsByVendedorAndYear($conexion, $selectedYear, "'Mantas'");
+                                                echo $output5;
+                                                ?>
+                                            </table>
+                                        </div>
+                                        <div class="col">Banquetas
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Vendedor</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output5 = countItemsByVendedorAndYear($conexion, $selectedYear, "'Banquetas'");
+                                                echo $output5;
+                                                ?>
+                                            </table>
+                                        </div>
+                                        <div class="col">Pertigas
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Vendedor</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output5 = countItemsByVendedorAndYear($conexion, $selectedYear, "'Pertigas'");
+                                                echo $output5;
+                                                ?>
+                                            </table>
+                                        </div>
+                                        <div class="col">Mangas
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Vendedor</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output5 = countItemsByVendedorAndYear($conexion, $selectedYear, "'Mangas'");
+                                                echo $output5;
+                                                ?>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <h5>Tabla Por Empresa</h5>
+                                        <div class="col">Guantes
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Empresa</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output5 = countItemsByClientAndYear($conexion, $selectedYear, "'Guantes'");
+                                                echo $output5;
+                                                ?>
+                                            </table>
+                                        </div>
+                                        <div class="col">Mantas
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Empresa</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output6 = countItemsByClientAndYear($conexion, $selectedYear, "'Mantas'");
+                                                echo $output6;
+                                                ?>
+                                            </table>
+                                        </div>
+                                        <div class="col">Banquetas
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Empresa</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output7 = countItemsByClientAndYear($conexion, $selectedYear, "'Banquetas'");
+                                                echo $output7;
+                                                ?>
+                                            </table>
+                                        </div>
+                                        <div class="col">Pertigas
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Empresa</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output8 = countItemsByClientAndYear($conexion, $selectedYear, "'Pertigas'");
+                                                echo $output8;
+                                                ?>
+                                            </table>
+                                        </div>
+                                        <div class="col">Mangas
+                                            <table class="table table-bordered table-sm mi-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Empresa</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $output8 = countItemsByClientAndYear($conexion, $selectedYear, "'Mangas'");
+                                                echo $output8;
+                                                ?>
+                                            </table>
+                                        </div>
+                                    </div>
+
 
                                 </div>
                             </div>
@@ -519,7 +671,8 @@ while ($row = mysqli_fetch_assoc($resultado)) {
                     <div class="row">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Accordion -->
-                            <a href="#collapseCardgrafica" class="d-block card-header py-3" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                            <a href="#collapseCardgrafica" class="d-block card-header py-3" data-bs-toggle="collapse"
+                                role="button" aria-expanded="true" aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-primary">Resumen en Graficas</h6>
                             </a>
                             <!-- Card Content - Collapse -->
@@ -560,7 +713,8 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 
     <!-- Bootstrap core JavaScript-->
     <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
 
     <!-- Core plugin JavaScript-->
@@ -570,86 +724,87 @@ while ($row = mysqli_fetch_assoc($resultado)) {
     <script src="../../js/sb-admin-2.min.js"></script>
 
     <script>
-        function onChangeYear() {
-            var selectedYear = document.getElementById("yearSelect").value;
-            var url = window.location.href.split("?")[0]; // Obtener la URL actual sin parámetros
-            window.location.href = url + "?year=" + selectedYear; // Redireccionar con el año seleccionado
-        }
+    function onChangeYear() {
+        var selectedYear = document.getElementById("yearSelect").value;
+        var url = window.location.href.split("?")[0]; // Obtener la URL actual sin parámetros
+        window.location.href = url + "?year=" + selectedYear; // Redireccionar con el año seleccionado
+    }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js">
+    <script
+        src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
-                    'Octubre', 'Noviembre', 'Diciembre'
-                ],
-                datasets: [
-                    <?php foreach ($equipos as $equipo) : ?> {
-                            label: '<?php echo $equipo; ?>',
-                            data: [<?php echo implode(", ", $datosPorEquipo[$equipo]); ?>]
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
+                'Octubre', 'Noviembre', 'Diciembre'
+            ],
+            datasets: [
+                <?php foreach ($equipos as $equipo) : ?> {
+                    label: '<?php echo $equipo; ?>',
+                    data: [<?php echo implode(", ", $datosPorEquipo[$equipo]); ?>]
 
-                        },
-                    <?php endforeach; ?>
-                ]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
                 },
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Totales de Equipos por mes'
-                    }
+                <?php endforeach; ?>
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Totales de Equipos por mes'
                 }
             }
-        });
+        }
+    });
     </script>
 
     <script>
-        var ctx = document.getElementById('myPieChart').getContext('2d');
+    var ctx = document.getElementById('myPieChart').getContext('2d');
 
-        var data = <?php echo json_encode($data); ?>;
+    var data = <?php echo json_encode($data); ?>;
 
-        var datasets = [];
-        var labels = [];
+    var datasets = [];
+    var labels = [];
 
-        for (var equipo in data) {
-            var claseData = data[equipo];
-            var cantidadPorEquipo = claseData.reduce(function(total, current) {
-                return total + current.cantidad;
-            }, 0);
+    for (var equipo in data) {
+        var claseData = data[equipo];
+        var cantidadPorEquipo = claseData.reduce(function(total, current) {
+            return total + current.cantidad;
+        }, 0);
 
 
-            datasets.push({
-                data: claseData.map(item => item.cantidad),
-                backgroundColor: colores,
-            });
+        datasets.push({
+            data: claseData.map(item => item.cantidad),
+            backgroundColor: colores,
+        });
 
-            labels.push(`${equipo} (${cantidadPorEquipo})`);
+        labels.push(`${equipo} (${cantidadPorEquipo})`);
+    }
+
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: datasets,
+            labels: labels
+        },
+        options: {
+            responsive: true,
         }
+    };
 
-        var config = {
-            type: 'pie',
-            data: {
-                datasets: datasets,
-                labels: labels
-            },
-            options: {
-                responsive: true,
-            }
-        };
-
-        new Chart(ctx, config);
+    new Chart(ctx, config);
     </script>
 </body>
 
