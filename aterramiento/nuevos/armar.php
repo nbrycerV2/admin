@@ -1,6 +1,57 @@
 <?php
+// Archivo: nuevo_orden.php
+
+// Establecer la conexión con la base de datos
+$servername = "localhost"; // Cambia esto si tu servidor de MySQL es diferente
+$username = "root"; // Cambia esto si tu nombre de usuario es diferente
+$password = ""; // Cambia esto si tu contraseña es diferente
+$dbname = "sistema_dielectricos2"; // Nombre de tu base de datos
+
+// Crear la conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Obtener la fecha actual
+$year = date("y"); // Obtiene los dos últimos dígitos del año
+$month = date("m"); // Obtiene el mes en formato numérico de dos dígitos
+
+// Construir el prefijo del código de orden
+$prefix = "ORD" . $year . $month;
+
+// Consultar el último número de orden de este mes y año
+$sql = "SELECT idOrdAterra FROM ordaterra WHERE idOrdAterra LIKE '$prefix%' ORDER BY idOrdAterra DESC LIMIT 1";
+$result = $conn->query($sql);
+
+// Inicializar el número correlativo
+$correlativo = 1;
+
+if ($result->num_rows > 0) {
+    // Si hay resultados, obtener el último número correlativo
+    $row = $result->fetch_assoc();
+    $lastCodigo = $row['idOrdAterra'];
+
+    // Extraer el número correlativo del código
+    $lastNumber = substr($lastCodigo, -3); // Últimos tres dígitos
+    $correlativo = intval($lastNumber) + 1; // Incrementar en uno
+}
+
+// Formatear el número correlativo a tres dígitos
+$correlativoStr = str_pad($correlativo, 3, "0", STR_PAD_LEFT);
+
+// Construir el nuevo código de orden
+$codigoOrden = $prefix . $correlativoStr;
+
+// Cerrar la conexión
+$conn->close();
+?>
+
+<?php
 $aterra = $_POST["aterra"];
-echo $aterra;
+include("bloqcampos.php");
 include("conexion.php");
 
 // Consulta SQL para obtener las empresas desde la tabla
@@ -18,7 +69,6 @@ while ($fila = $resultado->fetch_assoc()) {
 
     // Combinar nombre de empresa y RUC en una sola opción
     $opcion = $cliente . " | " . $ruc;
-
     // Agregar opción a la lista
     $listaEmpresas .= "<option value='$opcion'>$opcion</option>";
 }
@@ -42,7 +92,8 @@ while ($fila = $resultado->fetch_assoc()) {
     // Agregar opción a la lista
     $listaEmpleados .= "<option value='$cod_user'>$opcion2</option>";
 }
-
+// Obtiene la fecha y hora actual en el formato YYYY-MM-DDTHH:MM
+$fechaHoraActual = date('Y-m-d\TH:i');
 ?>
 
 <!DOCTYPE html>
@@ -71,6 +122,11 @@ while ($fila = $resultado->fetch_assoc()) {
 <datalist id="empleados">
     <?php echo $listaEmpleados; ?>
 </datalist>
+<style>
+    .ocultar-campo {
+        display: none;
+    }
+</style>
 
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -147,57 +203,61 @@ while ($fila = $resultado->fetch_assoc()) {
         </ul>
         <!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
+        <!-- Contenido HTML -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
             <div id="content">
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb- static-top shadow">
                     <h1 class="h3 mb-0 text-gray-800">Inicio</h1>
                 </nav>
-                <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <form action="procesar.php" method="post">
+                    <form action="procesar_formulario.php" method="post">
                         <div class="row">
+                            <!-- Configuracion de la Orden -->
                             <div class="row">
-                                <label for="">
-                                    Configuracion de la Orden
-                                </label>
-                                <div class="col-12 ">
+                                <label for="">Configuracion de la Orden</label>
+                                <div class="col-12">
                                     <div class="dropdown-divider"></div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-8">
+                                    <!-- Campo para mostrar el ID de la orden de aterramiento -->
+                                    <div class="input-group input-group-sm mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">ID Orden Aterramiento</span>
+                                        <input type="text" class="form-control" name="idOrdAterraphp" value="<?php echo $codigoOrden; ?>" readonly>
+                                    </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Cliente</span>
-                                        <input type="text" class="form-control" list="empresas">
+                                        <input type="text" class="form-control" name="idClientephp" list="empresas" value="">
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Cantidad (Juegos)</span>
-                                        <input type="number" min="0" class="form-control">
+                                        <input type="number" min="0" class="form-control" name="Cantidadphp" value="" required>
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Vendedor</span>
-                                        <input type="text" class="form-control" list="empleados">
+                                        <input type="text" class="form-control" list="empleados" name="Vendedorphp" value="" required>
+                                        <span class="input-group-text ocultar-campo" id="inputGroup-sizing-sm">Fecha De Solicitud</span>
+                                        <input type="datetime-local" class="form-control ocultar-campo" name="FechaSolicitudphp" value="<?php echo $fechaHoraActual; ?>">
+                                        <span class="input-group-text ocultar-campo" id="inputGroup-sizing-sm">Fecha De Entrega</span>
+                                        <input type="date" class="form-control ocultar-campo" name="FechaEntregaphp" value="">
+                                        <input type="hidden" name="aterraphp" value="<?php echo htmlspecialchars($aterra); ?>">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="card">
                                         <div class="card-body">
-                                            -En caso de que no se encuentre el cliente, dar click <a href="">aqui</a> primero.
+                                            -En caso de que no se encuentre el cliente, dar click <a href="../../empresas/index.php">aqui</a> primero.
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+                        <!-- Configuracion del Aterramiento -->
                         <div class="row">
                             <div class="row">
-                                <label for="">
-                                    Configuracion del Aterramiento
-                                </label>
-                                <div class="col-12 ">
+                                <label for="">Configuracion del Aterramiento</label>
+                                <div class="col-12">
                                     <div class="dropdown-divider"></div>
                                 </div>
                             </div>
@@ -205,7 +265,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                 <div class="col-4">
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Mordaza de Linea</span>
-                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="MLineaphp" <?php if ($MordazaLineaA) echo 'disabled'; ?> value="" required>
                                             <option value=""></option>
                                             <option value="RC600-2282">RC600-2282</option>
                                             <option value="RC600-0965">RC600-0965</option>
@@ -227,9 +287,9 @@ while ($fila = $resultado->fetch_assoc()) {
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Longitud A</span>
-                                        <input type="number" min="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input type="number" min="1" step="0.1" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($MordazaLineaLA) echo 'disabled'; ?> name="LongitudAphp" value="" required>
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Seccion A</span>
-                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($MordazaLineaSA) echo 'disabled'; ?> name="SeccionAphp" value="" required>
                                             <option value=""></option>
                                             <option value="25">25</option>
                                             <option value="35">35</option>
@@ -240,15 +300,30 @@ while ($fila = $resultado->fetch_assoc()) {
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Terminal de Linea</span>
-                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-
+                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($TerminalLinea) echo 'disabled'; ?> name="TLineaphp" value="" required>
+                                            <option value=""></option>
+                                            <option value="MTA35-C">MTA35-C</option>
+                                            <option value="MTA50-C">MTA50-C</option>
+                                            <option value="MTA70-C">MTA70-C</option>
+                                            <option value="MTA120-C">MTA120-C</option>
+                                            <option value="2A10-M10">2A10-M10</option>
+                                            <option value="2A10-M10">2A10-M10</option>
+                                            <option value="2A14M-10">2A14M-10</option>
+                                            <option value="2A5-M8">2A5-M8</option>
+                                            <option value="2A7-M8">2A7-M8</option>
+                                            <option value="A10-M10">A10-M10</option>
+                                            <option value="A14-M10">A14-M10</option>
+                                            <option value="A5-M8">A5-M8</option>
+                                            <option value="A7-M8">A7-M8</option>
+                                            <option value="2710110">2710110</option>
+                                            <option value="NAC_EXT">NAC_EXT</option>
                                         </select>
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Longitud X</span>
-                                        <input type="number" min="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input type="number" min="1" step="0.1" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($MordazaTierraLX) echo 'disabled'; ?> name="LongitudXphp" value="" required>
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Seccion X</span>
-                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($MordazaTierraSX) echo 'disabled'; ?> name="SeccionXphp" value="" required>
                                             <option value=""></option>
                                             <option value="25">25</option>
                                             <option value="35">35</option>
@@ -259,28 +334,45 @@ while ($fila = $resultado->fetch_assoc()) {
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Terminal de X</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($TerminalX) echo 'disabled'; ?> name="TerminalXphp" value="" required>
+                                            <option value=""></option>
+                                            <option value="MTA35-C">MTA35-C</option>
+                                            <option value="MTA50-C">MTA50-C</option>
+                                            <option value="MTA70-C">MTA70-C</option>
+                                            <option value="MTA120-C">MTA120-C</option>
+                                            <option value="2A10-M10">2A10-M10</option>
+                                            <option value="2A10-M10">2A10-M10</option>
+                                            <option value="2A14M-10">2A14M-10</option>
+                                            <option value="2A5-M8">2A5-M8</option>
+                                            <option value="2A7-M8">2A7-M8</option>
+                                            <option value="A10-M10">A10-M10</option>
+                                            <option value="A14-M10">A14-M10</option>
+                                            <option value="A5-M8">A5-M8</option>
+                                            <option value="A7-M8">A7-M8</option>
+                                            <option value="2710110">2710110</option>
+                                            <option value="NAC_EXT">NAC_EXT</option>
+                                        </select>
                                     </div>
-
                                 </div>
                                 <div class="col-4">
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Mordaza de Tierra</span>
-                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($MordazaTierra) echo 'disabled'; ?> name="MTierraphp" value="" required>
                                             <option value=""></option>
                                             <option value="ATR11627-2">ATR11627-2</option>
                                             <option value="RG3403T">RG3403T</option>
                                             <option value="RG3363-1">RG3363-1</option>
                                             <option value="ATR03641-1 Carretel">ATR03641-1 Carretel</option>
-                                            <option value="S/CODIGO Carrete Nacional">S/CODIGO Carrete Nacional</option>
                                             <option value="RG3363-4SJ">RG3363-4SJ</option>
+                                            <option value="N3B8 FAMECA">N3B8 FAMECA</option>
+                                            <option value="RC600-0085">RC600-0085</option>
                                         </select>
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Longitud B</span>
-                                        <input type="number" min="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input type="number" min="1" step="0.1" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($MordazaTierraLB) echo 'disabled'; ?> name="LongitudBphp" value="" required>
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Seccion B</span>
-                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($MordazaTierraSB) echo 'disabled'; ?> name="SeccionBphp" value="" required>
                                             <option value=""></option>
                                             <option value="25">25</option>
                                             <option value="35">35</option>
@@ -291,19 +383,38 @@ while ($fila = $resultado->fetch_assoc()) {
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Terminal de Tierra</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($TerminalTierra) echo 'disabled'; ?> name="TTierraphp" value="" required>
+                                            <option value=""></option>
+                                            <option value="MTA35-C">MTA35-C</option>
+                                            <option value="MTA50-C">MTA50-C</option>
+                                            <option value="MTA70-C">MTA70-C</option>
+                                            <option value="MTA120-C">MTA120-C</option>
+                                            <option value="2A10-M10">2A10-M10</option>
+                                            <option value="2A10-M10">2A10-M10</option>
+                                            <option value="2A14M-10">2A14M-10</option>
+                                            <option value="2A5-M8">2A5-M8</option>
+                                            <option value="2A7-M8">2A7-M8</option>
+                                            <option value="A10-M10">A10-M10</option>
+                                            <option value="A14-M10">A14-M10</option>
+                                            <option value="A5-M8">A5-M8</option>
+                                            <option value="A7-M8">A7-M8</option>
+                                            <option value="2710110">2710110</option>
+                                            <option value="NAC_EXT">NAC_EXT</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-4">imagen</div>
+                                <div class="col-4">
+                                    <!-- Placeholder para la imagen -->
+                                    imagen
+                                </div>
                             </div>
-
                         </div>
+
+                        <!-- Accesorios Extras -->
                         <div class="row">
                             <div class="row">
-                                <label for="">
-                                    Accesorios Extras
-                                </label>
-                                <div class="col-12 ">
+                                <label for="">Accesorios Extras</label>
+                                <div class="col-12">
                                     <div class="dropdown-divider"></div>
                                 </div>
                             </div>
@@ -313,27 +424,56 @@ while ($fila = $resultado->fetch_assoc()) {
                                         <div class="col-4">
                                             <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">Pertiga</span>
-                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($AccPertiga) echo 'disabled'; ?> name="Pertigaphp" value="">
+                                                    <option value=""></option>
+                                                    <option value="RC600-0434">RC600-0434</option>
+                                                    <option value="RH1760-1">RH1760-1</option>
+                                                    <option value="RG3363-1">RG3363-1</option>
+                                                    <option value="VMR-15">VMR-15</option>
+                                                    <option value="VMR-30">VMR-30</option>
+                                                    <option value="VMR-45">VMR-45</option>
+                                                    <option value="VMR-70">VMR-70</option>
+                                                    <option value="VMR-90">VMR-90</option>
+                                                </select>
                                             </div>
                                             <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">Adaptador</span>
-                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($AccAdaptador) echo 'disabled'; ?> name="Adaptadorphp" value="">
+                                                    <option value=""></option>
+                                                    <option value="RG3368">RG3368</option>
+                                                    <option value="ATR14442-1 Plato Portapinzas (Dst-7)">ATR14442-1 Plato Portapinzas (Dst-7)</option>
+                                                    <option value="VMR07205-1 Adaptador para maniobrar">VMR07205-1 Adaptador para maniobrar</option>
+                                                    <option value="RM4455-29B Adaptador para maniobrar">RM4455-29B Adaptador para maniobrar</option>
+                                                    <option value="FLV-3585 Pino Bola">FLV-3585 Pino Bola</option>
+                                                    <option value="ATR08969-1 Mordaza Pino Bola">ATR08969-1 Mordaza Pino Bola</option>
+                                                    <option value="RM4455-78 Extractor de fusibles">RM4455-78 Extractor de fusibles</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">Varilla</span>
-                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($AccVarilla) echo 'disabled'; ?> name="Varillaphp" value="">
+                                                    <option value=""></option>
+                                                    <option value="Var 5/8">Var 5/8</option>
+                                                </select>
                                             </div>
                                             <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">Trifurcacion</span>
-                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" <?php if ($AccTrifurcacion) echo 'disabled'; ?> name="Trifurcacionphp" value="">
+                                                    <option value=""></option>
+                                                    <option value="RG4754-1 Pulpo">RG4754-1 Pulpo</option>
+                                                    <option value="ATR04116-1 Trapecio">ATR04116-1 Trapecio</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-text" id="inputGroup-sizing-sm">Otros</span>
-                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="Otrosphp" value="">
+                                                    <option></option>
+                                                    <option value="RG3625 Soporte de suspension">RG3625 Soporte de suspension</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -349,41 +489,40 @@ while ($fila = $resultado->fetch_assoc()) {
                                 <div class="col-3">
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Estuche Chico</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstChico" value="">
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Estuche Grande</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstGrande" value="">
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Estuche Metalico</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstMetalico" value="">
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Estuche Pertigas</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstPertiga" value="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3 ">
+                                            <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
+                                            <a class="btn btn-sm btn-danger" href="nueva_orden.php"> Cancelar</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-
                 </div>
-                <!-- /.container-fluid -->
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Logytec 2023</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
+
+
+    </div>
+    <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
 
@@ -410,84 +549,6 @@ while ($fila = $resultado->fetch_assoc()) {
     <!-- Page level custom scripts -->
     <script src="../../js/demo/chart-area-demo.js"></script>
     <script src="../../js/demo/chart-pie-demo.js"></script>
-
-    <script>
-        function actualizarOpciones2() {
-            var opcionesSelect2 = document.getElementById("terminal_tierra");
-            opcionesSelect2.innerHTML = ""; // Limpiamos las opciones del select
-
-            var opcionesSelect3 = document.getElementById("terminal_tierra_2");
-            opcionesSelect3.innerHTML = ""; // Limpiamos las opciones del select
-
-            var grosorCableSelect2 = document.getElementById("seccion_B");
-            var grosorCable2 = grosorCableSelect2.options[grosorCableSelect2.selectedIndex].value;
-
-            var configuracion = document.getElementById("configuracion");
-
-
-
-            if (grosorCable2 == "35") {
-                opcionesSelect2.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A7-M8">2A7-M8 Cañon Largo P/Cable</option><option value="A7-M8">A7-M8 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-                opcionesSelect3.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A7-M8">2A7-M8 Cañon Largo P/Cable</option><option value="A7-M8">A7-M8 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable2 == "50") {
-                opcionesSelect2.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A10-M10">2A10-M10 Cañon Largo P/Cable</option><option value="A10-M10">A10-M10 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-                opcionesSelect3.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A10-M10">2A10-M10 Cañon Largo P/Cable</option><option value="A10-M10">A10-M10 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable2 == "25") {
-                opcionesSelect2.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A5-M8">2A5-M8 Cañon Largo P/Cable</option><option value="A5M8">A5M8 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-                opcionesSelect3.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A5-M8">2A5-M8 Cañon Largo P/Cable</option><option value="A5M8">A5M8 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable2 == "70") {
-                opcionesSelect2.innerHTML = '<option value="MTA70-C">MTA70-C</option><option value="2A14-M10">2A14-M10 Cañon Largo P/Cable</option><option value="A14-M10">A14-M10 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-                opcionesSelect3.innerHTML = '<option value="MTA70-C">MTA70-C</option><option value="2A14-M10">2A14-M10 Cañon Largo P/Cable</option><option value="A14-M10">A14-M10 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable2 == "95") {
-                opcionesSelect2.innerHTML = '<option value="MTA120-C">MTA120-C</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-                opcionesSelect3.innerHTML = '<option value="MTA120-C">MTA120-C</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            }
-
-        }
-    </script>
-    <script>
-        function actualizarOpciones() {
-            var opcionesSelect = document.getElementById("terminal_linea");
-            opcionesSelect.innerHTML = ""; // Limpiamos las opciones del select
-
-            var grosorCableSelect = document.getElementById("seccion_A");
-            var grosorCable = grosorCableSelect.options[grosorCableSelect.selectedIndex].value;
-
-            if (grosorCable == "35") {
-                opcionesSelect.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A7-M8">2A7-M8 Cañon Largo P/Cable</option><option value="A7-M8">A7-M8 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable == "50") {
-                opcionesSelect.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A10-M10">2A10-M10 Cañon Largo P/Cable</option><option value="A10-M10">A10-M10 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable == "25") {
-                opcionesSelect.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A5-M8">2A5-M8 Cañon Largo P/Cable</option><option value="A5M8">A5M8 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable == "70") {
-                opcionesSelect.innerHTML = '<option value="MTA70-C">MTA70-C</option><option value="2A14-M10">2A14-M10 Cañon Largo P/Cable</option><option value="A14-M10">A14-M10 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable == "95") {
-                opcionesSelect.innerHTML = '<option value="MTA120-C">MTA120-C</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            }
-        }
-    </script>
-    <script>
-        function actualizarOpciones3() {
-            var opcionesSelect4 = document.getElementById("terminal_lineax");
-            opcionesSelect4.innerHTML = ""; // Limpiamos las opciones del select
-
-            var grosorCableSelect4 = document.getElementById("sec_x");
-            var grosorCable4 = grosorCableSelect4.options[grosorCableSelect4.selectedIndex].value;
-
-
-            if (grosorCable4 == "35") {
-                opcionesSelect4.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A7-M8">2A7-M8 Cañon Largo P/Cable</option><option value="A7-M8">A7-M8 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable4 == "50") {
-                opcionesSelect4.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A10-M10">2A10-M10 Cañon Largo P/Cable</option><option value="A10-M10">A10-M10 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable4 == "25") {
-                opcionesSelect4.innerHTML = '<option value="MTA50-C">MTA50-C</option><option value="2A5-M8">2A5-M8 Cañon Largo P/Cable</option><option value="A5M8">A5M8 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable4 == "70") {
-                opcionesSelect4.innerHTML = '<option value="MTA70-C">MTA70-C</option><option value="2A14-M10">2A14-M10 Cañon Largo P/Cable</option><option value="A14-M10">A14-M10 Cañon Corto P/Cable</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            } else if (grosorCable4 == "95") {
-                opcionesSelect4.innerHTML = '<option value="MTA120-C">MTA120-C</option><option value="2710110">2710110</option><option value="NAC_EXT Terminal Nacional">NAC_EXT Terminal Nacional</option>';
-            }
-        }
-    </script>
 
 
 </body>

@@ -1,9 +1,9 @@
 <?php
-// Conexión a la base de datos
-$conexion = mysqli_connect("localhost", "root", "", "sistema");
+include("conexion.php");
 
 // Consulta SQL para obtener los datos
-$sql = "SELECT * FROM aterra_orden";
+$sql = "SELECT idOrdAterra, DATE(FechaSolicitud) AS FechaSolicitud, TipoAterra, Cliente, Ruc, Cantidad, DATE(FechaEntrega) AS FechaEntrega, Estado, Vendedor 
+FROM ordaterra;";
 
 // Ejecución de la consulta SQL
 $resultado = mysqli_query($conexion, $sql);
@@ -18,3 +18,8 @@ while ($fila = mysqli_fetch_assoc($resultado)) {
 
 // Conversión del arreglo en formato JSON
 echo json_encode($data);
+
+
+
+// Cerrar la conexión
+$conexion->close();

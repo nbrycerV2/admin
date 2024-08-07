@@ -110,7 +110,7 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3 ">
                                     <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
-                                    <a class="btn btn-sm btn-danger" href="graficas.php"> Cancelar</a>
+                                    <a class="btn btn-sm btn-danger" href="index.php"> Cancelar</a>
                                 </div>
                             </div>
                         </div>
@@ -152,12 +152,6 @@
                                     <input type="radio" name="aterra" id="tra" value="TRA">
                                     <label for="tra">Trapecio</label>
                                 </label><br>
-                                <label onclick="muestro(8)">
-                                    <input type="radio" name="aterra" id="tpf" value="TPF">
-                                    <label for="tpf">Trapecio con Pertiga Fija</label>
-                                </label><br>
-
-
                             </div>
                             <div class="col-3">
 
