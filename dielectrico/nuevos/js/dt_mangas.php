@@ -28,7 +28,7 @@ $(document).ready(function() {
         }, {
             "data": null,
             render: function(data, type, row) {
-                if (row.serie_manga === null) {
+                if (row.serie_manga == null || row.serie_manga == '') {
                     return row.serie_edit;
                 } else {
                     return row.serie_manga;
@@ -91,7 +91,7 @@ $(document).ready(function() {
         var id = $(this).data('id');
         var rowData = $('#dataTable').DataTable().row($(this).closest('tr')).data();
 
-        if (rowData.serie_manga === null) {
+        if (rowData.serie_manga === null || rowData.serie_manga === '') {
             var series = rowData.serie_edit
         } else {
             var series = rowData.serie_manga;
