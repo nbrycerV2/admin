@@ -73,7 +73,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="index.php">Nuevos</a>
-                        <a class="collapse-item" href="../mantenimiento/indexm.php">Mantenimiento</a>
+                        <a class="collapse-item" href="#">Mantenimiento</a>
                     </div>
                 </div>
             </li>
@@ -87,7 +87,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../../dielectrico/nuevos/index.php">Nuevos</a>
-                        <a class="collapse-item" href="#">Mantenimiento</a>
+                        <a class="collapse-item" href="../mantenimiento/indexm.php">Mantenimiento</a>
                     </div>
                 </div>
             </li>
