@@ -1087,7 +1087,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
         $serie_edit = array();
         $otro = array();
         // Consulta SQL para obtener los valores de la tabla "orden_item_m"
-        $sql = "SELECT * FROM orden_item_m WHERE id_orden = $id_orden";
+        $sql = "SELECT * FROM orden_item_m WHERE id_orden = $id_orden AND resultado = 'Apto'";
 
         // Ejecutar la consulta
         $result = $conexion->query($sql);
