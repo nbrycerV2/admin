@@ -96,14 +96,20 @@ $json_details = json_encode($details);
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/sb-admin-2.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js">
+    </script>
     <!-- Custom styles for this page -->
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
@@ -241,28 +247,31 @@ $json_details = json_encode($details);
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Aterramiento</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="index.php">Nuevos</a>
-                        <a class="collapse-item" href="#">Mantenimiento</a>
+                        <a class="collapse-item" href="../mantenimiento/index.php">Mantenimiento</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Dielectricos</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-bs-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-bs-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../../dielectrico/nuevos/index.php">Nuevos</a>
-                        <a class="collapse-item" href="">Mantenimiento</a>
+                        <a class="collapse-item" href="../../dielectrico/mantenimiento/index.php">Mantenimiento</a>
                     </div>
                 </div>
             </li>
@@ -308,7 +317,8 @@ $json_details = json_encode($details);
                                         <thead class="">
                                             <tr>
                                                 <th>Informacion general</th>
-                                                <th><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal" data-bs-target="#edit_orden">Editar</button></th>
+                                                <th><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#edit_orden">Editar</button></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -400,10 +410,18 @@ $json_details = json_encode($details);
                                     <table>
                                         <thead>
                                             <tr>
-                                                <td><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal" data-bs-target="#agregar_item" id="agregarItemBtn">Agregar Item</button></td>
-                                                <td><a class="btn btn-sm2 btn-secondary" href="OrdFabri_pdfs.php?id_orden=<?php echo $id_orden ?>">Orden de Fabricación<a></td>
-                                                <td><a class="btn btn-sm2 btn-secondary" href="aterramiento.php?id_orden=<?php echo $id_orden ?>">Modelo de Aterramiento</a></td>
-                                                <td><a class="btn btn-sm2 btn-secondary" href="generar_pdfs.php?id_orden=<?php echo $id_orden ?>">Descargar todos los Informes</a></td>
+                                                <td><button class="btn btn-sm2 btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#agregar_item" id="agregarItemBtn">Agregar
+                                                        Item</button></td>
+                                                <td><a class="btn btn-sm2 btn-secondary"
+                                                        href="OrdFabri_pdfs.php?id_orden=<?php echo $id_orden ?>">Orden
+                                                        de Fabricación<a></td>
+                                                <td><a class="btn btn-sm2 btn-secondary"
+                                                        href="aterramiento.php?id_orden=<?php echo $id_orden ?>">Modelo
+                                                        de Aterramiento</a></td>
+                                                <td><a class="btn btn-sm2 btn-secondary"
+                                                        href="generar_pdfs.php?id_orden=<?php echo $id_orden ?>">Descargar
+                                                        todos los Informes</a></td>
                                             </tr>
                                         </thead>
                                     </table>
@@ -412,7 +430,8 @@ $json_details = json_encode($details);
                             <br>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%"
+                                        cellspacing="0">
                                         <thead>
                                             <tr>
 
@@ -470,29 +489,40 @@ $json_details = json_encode($details);
                                             <tr>
                                                 <td colspan="2">
                                                     <div class="input-group input-group-sm mb-3">
-                                                        <span class="input-group-text" id="inputGroup-sizing-sm">Empresa</span>
-                                                        <input type="text" class="form-control" name="idClientephp" list="empresas" value="<?php echo htmlspecialchars($order['Cliente']); ?>" id="empresaInput">
+                                                        <span class="input-group-text"
+                                                            id="inputGroup-sizing-sm">Empresa</span>
+                                                        <input type="text" class="form-control" name="idClientephp"
+                                                            list="empresas"
+                                                            value="<?php echo htmlspecialchars($order['Cliente']); ?>"
+                                                            id="empresaInput">
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div class="input-group input-group-sm mb-3">
-                                                        <span class="input-group-text" id="inputGroup-sizing-sm">Ruc</span>
-                                                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($order['Ruc']); ?>" name="Rucphp" id="rucInput">
+                                                        <span class="input-group-text"
+                                                            id="inputGroup-sizing-sm">Ruc</span>
+                                                        <input type="text" class="form-control"
+                                                            value="<?php echo htmlspecialchars($order['Ruc']); ?>"
+                                                            name="Rucphp" id="rucInput">
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="input-group input-group-sm mb-3">
-                                                        <span class="input-group-text" id="inputGroup-sizing-sm">Vendedor</span>
-                                                        <input type="text" class="form-control" name="Vendedorphp" list="empleados" value="<?php echo htmlspecialchars($order['Vendedor']); ?>">
+                                                        <span class="input-group-text"
+                                                            id="inputGroup-sizing-sm">Vendedor</span>
+                                                        <input type="text" class="form-control" name="Vendedorphp"
+                                                            list="empleados"
+                                                            value="<?php echo htmlspecialchars($order['Vendedor']); ?>">
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div class="input-group input-group-sm mb-3">
-                                                        <span class="input-group-text" id="inputGroup-sizing-sm">Estado</span>
+                                                        <span class="input-group-text"
+                                                            id="inputGroup-sizing-sm">Estado</span>
                                                         <select class="form-control" name="Estadophp" id="">
                                                             <?php
                                                             $estadoActual = htmlspecialchars($order['Estado']);
@@ -509,16 +539,22 @@ $json_details = json_encode($details);
                                                 </td>
                                                 <td>
                                                     <div class="input-group input-group-sm mb-3">
-                                                        <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de Salida</span>
-                                                        <input type="date" class="form-control" value="<?php echo htmlspecialchars($modal['FechaEntrega']); ?>" name="FechaEntregaphp" id="">
+                                                        <span class="input-group-text" id="inputGroup-sizing-sm">Fecha
+                                                            de Salida</span>
+                                                        <input type="date" class="form-control"
+                                                            value="<?php echo htmlspecialchars($modal['FechaEntrega']); ?>"
+                                                            name="FechaEntregaphp" id="">
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div class="input-group input-group-sm mb-3">
-                                                        <span class="input-group-text" id="inputGroup-sizing-sm">Fecha de Informe</span>
-                                                        <input type="date" class="form-control" value="<?php echo htmlspecialchars($modal['FechaInforme']); ?>" name="FechaInformephp" id="">
+                                                        <span class="input-group-text" id="inputGroup-sizing-sm">Fecha
+                                                            de Informe</span>
+                                                        <input type="date" class="form-control"
+                                                            value="<?php echo htmlspecialchars($modal['FechaInforme']); ?>"
+                                                            name="FechaInformephp" id="">
                                                     </div>
                                                 </td>
                                             </tr>
@@ -527,7 +563,8 @@ $json_details = json_encode($details);
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-sm btn-secondary"
+                                    data-bs-dismiss="modal">Cerrar</button>
                                 <button type="submit" class="btn btn-sm btn-primary">Guardar Cambios</button>
                             </div>
                         </form>
@@ -544,7 +581,9 @@ $json_details = json_encode($details);
 
     <!-- Bootstrap core JavaScript-->
     <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -554,10 +593,13 @@ $json_details = json_encode($details);
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js"></script>
+    <script
+        src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js">
+    </script>
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
     <script>
@@ -669,21 +711,32 @@ $json_details = json_encode($details);
                             items.forEach(function(item, index) {
                                 if (column.data === "Resultado") {
                                     var options = ['Pendiente', 'Apto', 'No Apto'];
-                                    var selectHtml = '<select class="form-select form-select-sm" id="' + column.data + '-' + index + '">';
+                                    var selectHtml =
+                                        '<select class="form-select form-select-sm" id="' +
+                                        column.data + '-' + index + '">';
                                     options.forEach(function(option) {
-                                        var selected = (option.trim() === item.trim()) ? 'selected' : '';
-                                        selectHtml += '<option value="' + option + '" ' + selected + '>' + option + '</option>';
+                                        var selected = (option.trim() === item
+                                            .trim()) ? 'selected' : '';
+                                        selectHtml += '<option value="' + option +
+                                            '" ' + selected + '>' + option +
+                                            '</option>';
                                     });
                                     selectHtml += '</select>';
                                     inputs += selectHtml;
                                 } else {
-                                    inputs += '<input type="text" class="form-control form-control-sm short-input mb-1" id="' + column.data + '-' + index + '" value="' + item.trim() + '">';
+                                    inputs +=
+                                        '<input type="text" class="form-control form-control-sm short-input mb-1" id="' +
+                                        column.data + '-' + index + '" value="' + item
+                                        .trim() + '">';
                                 }
                             });
                             modalTable += '<td>' + inputs + '</td>';
                         } else {
-                            var inputClass = column.data === "Serie" ? "form-control form-control-sm short-input" : "form-control form-control-sm";
-                            modalTable += '<td><input type="text" class="' + inputClass + '" id="' + column.data + '" value="' + rowData[column.data] + '"></td>';
+                            var inputClass = column.data === "Serie" ?
+                                "form-control form-control-sm short-input" :
+                                "form-control form-control-sm";
+                            modalTable += '<td><input type="text" class="' + inputClass + '" id="' +
+                                column.data + '" value="' + rowData[column.data] + '"></td>';
                         }
                     }
                 });
@@ -715,23 +768,35 @@ $json_details = json_encode($details);
                             items.forEach(function(item, index) {
                                 if (column.data === "Resultado") {
                                     var options = ['Pendiente', 'Apto', 'No Apto'];
-                                    var selectHtml = '<select class="form-select form-select-sm" id="' + column.data + '-' + index + '">';
+                                    var selectHtml =
+                                        '<select class="form-select form-select-sm" id="' +
+                                        column.data + '-' + index + '">';
                                     options.forEach(function(option) {
-                                        var selected = (option.trim() === item.trim()) ? 'selected' : '';
-                                        selectHtml += '<option value="' + option + '" ' + selected + '>' + option + '</option>';
+                                        var selected = (option.trim() === item
+                                            .trim()) ? 'selected' : '';
+                                        selectHtml += '<option value="' + option +
+                                            '" ' + selected + '>' + option +
+                                            '</option>';
                                     });
                                     selectHtml += '</select>';
                                     inputs += selectHtml;
                                 } else {
-                                    inputs += '<input type="text" class="form-control form-control-sm short-input mb-1" id="' + column.data + '-' + index + '" value="' + item.trim() + '">';
+                                    inputs +=
+                                        '<input type="text" class="form-control form-control-sm short-input mb-1" id="' +
+                                        column.data + '-' + index + '" value="' + item
+                                        .trim() + '">';
                                 }
                             });
                             modalTable += '<td>' + inputs + '</td>';
                         } else {
-                            var inputClass = column.data === "Serie" ? "form-control form-control-sm short-input" : "form-control form-control-sm";
-                            var inputField = '<input type="text" class="' + inputClass + '" id="' + column.data + '" value="' + rowData[column.data] + '"';
+                            var inputClass = column.data === "Serie" ?
+                                "form-control form-control-sm short-input" :
+                                "form-control form-control-sm";
+                            var inputField = '<input type="text" class="' + inputClass + '" id="' +
+                                column.data + '" value="' + rowData[column.data] + '"';
                             if (column.data === "Serie") {
-                                inputField += ' data-original-serie="' + rowData[column.data] + '" maxlength="7"'; // Añadido maxlength para Serie
+                                inputField += ' data-original-serie="' + rowData[column.data] +
+                                    '" maxlength="7"'; // Añadido maxlength para Serie
                             }
                             inputField += '>';
                             modalTable += '<td>' + inputField + '</td>';
@@ -756,9 +821,10 @@ $json_details = json_encode($details);
                             column.data === "MaxPermisible" || column.data === "Resultado"
                         ) {
                             var inputs = [];
-                            $('#modalBodyContent').find('[id^=' + column.data + ']').each(function() {
-                                inputs.push($(this).val());
-                            });
+                            $('#modalBodyContent').find('[id^=' + column.data + ']').each(
+                                function() {
+                                    inputs.push($(this).val());
+                                });
                             modifiedData[column.data] = inputs.join("|");
                         } else {
                             modifiedData[column.data] = $('#' + column.data).val();
@@ -791,7 +857,8 @@ $json_details = json_encode($details);
                                 var updatedRow = table.row(rowIndex).data();
                                 columns.forEach(function(column) {
                                     if (column.title !== "Acciones") {
-                                        updatedRow[column.data] = modifiedData[column.data];
+                                        updatedRow[column.data] = modifiedData[column
+                                            .data];
                                     }
                                 });
 
@@ -839,7 +906,8 @@ $json_details = json_encode($details);
             });
 
             $('#agregarItemBtn').on('click', function() {
-                var idOrdAterra = '<?php echo $id_orden; ?>'; // Obtener dinámicamente el valor de idOrdAterra
+                var idOrdAterra =
+                    '<?php echo $id_orden; ?>'; // Obtener dinámicamente el valor de idOrdAterra
 
                 $.ajax({
                     url: 'agregar_item.php?idOrdAterra=' + idOrdAterra,

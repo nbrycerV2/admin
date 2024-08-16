@@ -12,21 +12,25 @@
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template-->
     <link href="../../css/sb-admin-2.min.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css"
+        rel="stylesheet">
 </head>
 <style>
-    .mi-tabla {
-        font-size: 13px;
-    }
+.mi-tabla {
+    font-size: 13px;
+}
 
-    .btn-sm2 {
-        font-size: 13px;
-        padding: 0.5px 3px;
-    }
+.btn-sm2 {
+    font-size: 13px;
+    padding: 0.5px 3px;
+}
 </style>
 
 <body id="page-top">
@@ -66,7 +70,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Aterramiento</span>
                 </a>
@@ -80,14 +85,16 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Dielectricos</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../../dielectrico/nuevos/index.php">Nuevos</a>
-                        <a class="collapse-item" href="#">Mantenimiento</a>
+                        <a class="collapse-item" href="../../dielectrico/mantenimiento/index.php">Mantenimiento</a>
                     </div>
                 </div>
             </li>
@@ -133,7 +140,8 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%"
+                                    cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Acciones</th>
@@ -202,70 +210,75 @@
     <script src="../../js/sb-admin-2.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js"></script>
+    <script
+        src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js">
+    </script>
 
     <script>
-        $(document).ready(function() {
-            $("#dataTable").DataTable({
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json",
-                },
-                "ajax": {
-                    "url": "obtener_datos.php",
-                    "method": "POST",
-                    "data": "",
-                    "dataSrc": function(json) {
-                        console.log(json);
-                        return json.data;
+    $(document).ready(function() {
+        $("#dataTable").DataTable({
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json",
+            },
+            "ajax": {
+                "url": "obtener_datos.php",
+                "method": "POST",
+                "data": "",
+                "dataSrc": function(json) {
+                    console.log(json);
+                    return json.data;
+                }
+            },
+            columns: [{
+                    data: null,
+                    render: function(data, type, row) {
+                        return '<a class="btn btn-primary btn-sm2" href="orden.php?IdOrdMant=' +
+                            row.IdOrdMant +
+                            '">Abrir</a> <button class="btn btn-danger btn-sm2" onclick="borrar(' +
+                            row.IdOrdMant + ')">Borrar</button>';
                     }
                 },
-                columns: [{
-                        data: null,
-                        render: function(data, type, row) {
-                            return '<a class="btn btn-primary btn-sm2" href="orden.php?IdOrdMant=' + row.IdOrdMant + '">Abrir</a> <button class="btn btn-danger btn-sm2" onclick="borrar(' + row.IdOrdMant + ')">Borrar</button>';
-                        }
-                    },
-                    {
-                        "data": "IdOrdMant"
-                    },
-                    {
-                        "data": "FechaSolicitud"
-                    },
-                    {
-                        "data": "Cliente"
-                    },
-                    {
-                        "data": "Ruc"
-                    },
-                    {
-                        "data": "Cantidad"
-                    },
-                    {
-                        "data": "FechaEntrega"
-                    },
-                    {
-                        "data": "Estado",
-                        render: function(data, type, row) {
-                            switch (data) {
-                                case 'Pendiente':
-                                    return "<span class='alert-warning'>Pendiente</span>";
-                                case 'Entregado':
-                                    return "<span class='alert-success'>Entregado</span>";
-                                case 'Anulado':
-                                    return "<span class='alert-danger'>Anulado</span>";
-                                case 'Evaluado':
-                                    return "<span class='alert-primary'>Evaluado</span>";
-                                default:
-                                    return data;
-                            }
+                {
+                    "data": "IdOrdMant"
+                },
+                {
+                    "data": "FechaSolicitud"
+                },
+                {
+                    "data": "Cliente"
+                },
+                {
+                    "data": "Ruc"
+                },
+                {
+                    "data": "Cantidad"
+                },
+                {
+                    "data": "FechaEntrega"
+                },
+                {
+                    "data": "Estado",
+                    render: function(data, type, row) {
+                        switch (data) {
+                            case 'Pendiente':
+                                return "<span class='alert-warning'>Pendiente</span>";
+                            case 'Entregado':
+                                return "<span class='alert-success'>Entregado</span>";
+                            case 'Anulado':
+                                return "<span class='alert-danger'>Anulado</span>";
+                            case 'Evaluado':
+                                return "<span class='alert-primary'>Evaluado</span>";
+                            default:
+                                return data;
                         }
                     }
-                ],
-                order: [
-                    [1, 'desc']
-                ]
-            });
+                }
+            ],
+            order: [
+                [1, 'desc']
+            ]
         });
+    });
     </script>
 
 </body>

@@ -17,7 +17,9 @@ include("conexion.php");
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template-->
 
@@ -75,7 +77,8 @@ include("conexion.php");
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Aterramiento</span>
                 </a>
@@ -89,11 +92,13 @@ include("conexion.php");
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item ">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench active"></i>
                     <span>Dielectricos</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../dielectrico/nuevos/index.php">Nuevos</a>
                         <a class="collapse-item" href="../dielectrico/mantenimiento/index.php">Mantenimiento</a>
@@ -128,7 +133,8 @@ include("conexion.php");
                         <div class="card-header py-3 ">
 
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                data-target="#exampleModal">
                                 Agregar
                             </button>
 
@@ -142,7 +148,8 @@ include("conexion.php");
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%"
+                                    cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Acciones</th>
@@ -222,7 +229,10 @@ include("conexion.php");
                 columns: [{
                     data: null,
                     render: function(data, type, row) {
-                        return '<a class="btn btn-primary btn-sm2" href="queja.php?id=' + row.id + '">Abrir</a>  <button class="btn btn-danger btn-sm2" onclick="borrar(' + row.id + ')">Borrar</button>';
+                        return '<a class="btn btn-primary btn-sm2" href="queja.php?id=' + row
+                            .id +
+                            '">Abrir</a>  <button class="btn btn-danger btn-sm2" onclick="borrar(' +
+                            row.id + ')">Borrar</button>';
                     }
                 }, {
                     "data": "id"
@@ -245,89 +255,150 @@ include("conexion.php");
 
     <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
+    <!-- Modal -->
+    <div class="modal fade" id="confirmarBorradoModal" tabindex="-1" role="dialog"
+        aria-labelledby="confirmarBorradoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarBorradoModalLabel">Confirmar borrado</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas borrar este elemento?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmarBorradoBtn">Borrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-
-<!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
-            <form action="procesar.php?funcion=add_emp" method="post">
-                <div class="modal-body">    
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">RUC</span>
+                <form action="procesar.php?funcion=add_emp" method="post">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">RUC</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="RUC" id="ruc" name="ruc"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button"
+                                    id="button-addon2">Consultar</button>
+                            </div>
                         </div>
-                        <input type="text" class="form-control" placeholder="RUC" id="ruc" name="ruc" aria-label="Username" aria-describedby="basic-addon1">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Consultar</button>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Razon Social</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Razon Social" id="razonSocial"
+                                name="razonSocial" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Direccion</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Direccion" id="direccion"
+                                name="direccion" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="Departamento" name="Departamento"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="Provincia" name="Provincia"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="Distrito" name="Distrito" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Estado</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Estado" id="estado" name="estado"
+                                aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Razon Social</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Razon Social" id="razonSocial" name="razonSocial" aria-label="Username" aria-describedby="basic-addon1">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Direccion</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Direccion" id="direccion" name="direccion" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="Departamento" name="Departamento" aria-label="Username" aria-describedby="basic-addon1">
-                        <input type="text" class="form-control" id="Provincia" name="Provincia" aria-label="Username" aria-describedby="basic-addon1">
-                        <input type="text" class="form-control" id="Distrito" name="Distrito" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Estado</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Estado" id="estado" name="estado" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>       
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    $(document).ready(function() {
-        $('#button-addon2').on('click', function() {
-            var ruc = $('#ruc').val();
-            $.ajax({
-                url: 'agregar.php', // Cambia esta ruta por la ruta correcta a tu archivo PHP
-                method: 'GET',
-                data: { numero: ruc },
-                success: function(response) {
-                    var empresa = JSON.parse(response);
-                    $('#ruc').val(empresa.numeroDocumento);
-                    $('#razonSocial').val(empresa.razonSocial);
-                    $('#direccion').val(empresa.direccion);
-                    $('#estado').val(empresa.estado);
-                    $('#Departamento').val(empresa.departamento);
-                    $('#Provincia').val(empresa.provincia);
-                    $('#Distrito').val(empresa.distrito);
-                    $('#exampleModal').modal('show');
-                },
-                error: function() {
-                    alert('Error al consultar la API');
-                }
+    <script>
+        $(document).ready(function() {
+            $('#button-addon2').on('click', function() {
+                var ruc = $('#ruc').val();
+                $.ajax({
+                    url: 'agregar.php', // Cambia esta ruta por la ruta correcta a tu archivo PHP
+                    method: 'GET',
+                    data: {
+                        numero: ruc
+                    },
+                    success: function(response) {
+                        var empresa = JSON.parse(response);
+                        $('#ruc').val(empresa.numeroDocumento);
+                        $('#razonSocial').val(empresa.razonSocial);
+                        $('#direccion').val(empresa.direccion);
+                        $('#estado').val(empresa.estado);
+                        $('#Departamento').val(empresa.departamento);
+                        $('#Provincia').val(empresa.provincia);
+                        $('#Distrito').val(empresa.distrito);
+                        $('#exampleModal').modal('show');
+                    },
+                    error: function() {
+                        alert('Error al consultar la API');
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
+
+    <script>
+        function borrar(id) {
+            // Mostrar el modal de confirmación
+            $('#confirmarBorradoModal').modal('show');
+
+            // Cuando se hace clic en el botón de "Borrar" en el modal, enviar la solicitud al servidor para eliminar los datos
+            $('#confirmarBorradoBtn').on('click', function() {
+                $.ajax({
+                    url: 'procesar.php?funcion=el_emp',
+                    type: 'POST',
+                    data: {
+                        id: id
+                    },
+                    success: function(response) {
+                        // Manejar la respuesta del servidor si es necesario
+                        console.log(response);
+                        //recargo la pagina
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Manejar errores si los hay
+                        console.log(error);
+                    }
+                });
+
+                // Ocultar el modal de confirmación
+                $('#confirmarBorradoModal').modal('hide');
+            });
+        }
+    </script>
 
 
 
