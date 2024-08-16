@@ -60,6 +60,7 @@ if ($result && $result->num_rows > 0) {
     $diagnostico = '';
     $accionesRealizadas = '';
     $conclusiones = '';
+    $fechainforme = '';
 }
 ?>
 <!DOCTYPE html>
