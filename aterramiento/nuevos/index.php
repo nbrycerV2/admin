@@ -12,11 +12,15 @@
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template-->
     <link href="../../css/sb-admin-2.min.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.css"
+        rel="stylesheet">
 </head>
 <style>
     .mi-tabla {
@@ -66,28 +70,31 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Aterramiento</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="index.php">Nuevos</a>
-                        <a class="collapse-item" href="../mantenimiento/indexm.php">Mantenimiento</a>
+                        <a class="collapse-item" href="../mantenimiento/index.php">Mantenimiento</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Dielectricos</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../../dielectrico/nuevos/index.php">Nuevos</a>
-                        <a class="collapse-item" href="#">Mantenimiento</a>
+                        <a class="collapse-item" href="../../dielectrico/mantenimiento/index.php">Mantenimiento</a>
                     </div>
                 </div>
             </li>
@@ -133,7 +140,8 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered mi-tabla table-sm" id="dataTable" width="100%"
+                                    cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Acciones</th>
@@ -211,7 +219,9 @@
     <!-- Page level custom scripts -->
     <script src="../../js/demo/chart-area-demo.js"></script>
     <script src="../../js/demo/chart-pie-demo.js"></script>
-    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js"></script>
+    <script
+        src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.1/b-html5-2.4.1/b-print-2.4.1/r-2.5.0/datatables.min.js">
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -231,7 +241,10 @@
                 columns: [{
                         data: null,
                         render: function(data, type, row) {
-                            return '<a class="btn btn-primary btn-sm2" href="orden.php?idOrdAterra=' + row.idOrdAterra + '">Abrir</a> <button class="btn btn-danger btn-sm2" onclick="borrar(' + row.idOrdAterra + ')">Borrar</button>';
+                            return '<a class="btn btn-primary btn-sm2" href="orden.php?idOrdAterra=' +
+                                row.idOrdAterra +
+                                '">Abrir</a> <button class="btn btn-danger btn-sm2" onclick="borrar(' +
+                                row.idOrdAterra + ')">Borrar</button>';
                         }
                     },
                     {
