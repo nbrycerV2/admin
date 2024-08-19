@@ -204,7 +204,7 @@ $html = '
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Orden de Aterrizaje</title>
+    <title>Orden de Fabricaciòn</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -295,8 +295,8 @@ $html = '
         <!-- Detalles del Aterramiento -->
         <tr>
             <th colspan="2">DETALLES DEL ATERRAMIENTO</th>
-            <th colspan="1">VALOR UNITARIO</th>
-            <th colspan="1" style="text-align: center;">TOTAL<br>Valor Unitario * Cantidad</th>
+            <th colspan="1">UNIDAD</th>
+            <th colspan="1" style="text-align: center;">TOTAL / Cantidad</th>
             <th colspan="1">✓</th>
         </tr>';
 
@@ -366,9 +366,9 @@ if (!empty($data_details['SeccionA'])) {
     $html .= '
             <tr>
                 <th>Sección A</th>
-                <td>' . htmlspecialchars($data_details['SeccionA']) . '</td>
-                <td>' . htmlspecialchars($data_details['LongitudA'] * $ValorSeccionA) . '</td> <!-- Valor Unitario de Longitud A -->
-                <td>' . htmlspecialchars($data_details['LongitudA'] * $cantidad * $ValorSeccionA) . '</td> <!-- Total * Cantidad -->
+                <td> Cable ' . htmlspecialchars($data_details['SeccionA']) . '</td>
+                <td>' . htmlspecialchars($data_details['LongitudA'] * $ValorSeccionA) . ' metros</td> <!-- Valor Unitario de Longitud A -->
+                <td>' . htmlspecialchars($data_details['LongitudA'] * $cantidad * $ValorSeccionA) . ' metros</td> <!-- Total * Cantidad -->
                 <td >□</td> <!-- Columna vacía -->
             </tr>';
 }
@@ -450,9 +450,9 @@ if (!empty($data_details['SeccionB'])) {
     $html .= '
             <tr>
                 <th>Sección B</th>
-                <td>' . htmlspecialchars($data_details['SeccionB']) . '</td>
-                <td>' . htmlspecialchars($data_details['LongitudB']) . '</td> <!-- Valor Unitario de Longitud B -->
-                <td>' . htmlspecialchars($data_details['LongitudB'] * $cantidad) . '</td> <!-- Total * Cantidad -->
+                <td>Cable ' . htmlspecialchars($data_details['SeccionB']) . '</td>
+                <td>' . htmlspecialchars($data_details['LongitudB']) . ' metros</td> <!-- Valor Unitario de Longitud B -->
+                <td>' . htmlspecialchars($data_details['LongitudB'] * $cantidad) . ' metros</td> <!-- Total * Cantidad -->
                 <td >□</td> <!-- Columna vacía -->
             </tr>';
 }
@@ -500,9 +500,9 @@ if (!empty($data_details['SeccionX'])) {
     $html .= '
             <tr>
                 <th>Sección X</th>
-                <td>' . htmlspecialchars($data_details['SeccionX']) . '</td>
-                <td>' . htmlspecialchars($data_details['LongitudX']) . '</td> <!-- Valor Unitario de Longitud X -->
-                <td>' . htmlspecialchars($data_details['LongitudX'] * $cantidad) . '</td> <!-- Total * Cantidad -->
+                <td>Cable ' . htmlspecialchars($data_details['SeccionX']) . '</td>
+                <td>' . htmlspecialchars($data_details['LongitudX']) . ' metros</td> <!-- Valor Unitario de Longitud X -->
+                <td>' . htmlspecialchars($data_details['LongitudX'] * $cantidad) . ' metros</td> <!-- Total * Cantidad -->
                 <td >□</td> <!-- Columna vacía -->
             </tr>';
 }
@@ -757,20 +757,38 @@ $html .= '
 
 if ($result_series && mysqli_num_rows($result_series) > 0) {
     $series_list = '';
+    $count = 0;
+
     while ($row = mysqli_fetch_assoc($result_series)) {
-        $series_list .= '<td>' . htmlspecialchars($row['Serie']) . '</td>';
+        // Agregar una nueva fila después de cada 9 series
+        if ($count % 8 == 0 && $count != 0) {
+            $series_list .= '</tr><tr>';
+        }
+
+        // Agregar el cuadrado al lado de cada serie
+        $series_list .= '<td>' . htmlspecialchars($row['Serie']) . ' □</td>';
+        $count++;
     }
+
+    // Envolver la lista de series en una tabla con filas divididas
     $html .= '
-                <div class="series">
-                    <h2>Series</h2>
-                    <table>
-                        <tr>' . $series_list . '</tr> <!-- Datos en una fila horizontal -->
-                    </table>
-                </div>';
+        <div class="series">
+            <h2>Series</h2>
+            <table>
+                <tr>' . $series_list . '</tr>
+            </table>
+        </div>';
+
+    // Envolver la lista de series en una tabla con filas divididas
+    $html .= '
+    <div class="OBSERVADO">
+        <h2>Observado:</h2>
+       
+    </div>';
 }
+
 
 // Escribir el contenido HTML al PDF
 $mpdf->WriteHTML($html);
-
 // Enviar el PDF al navegador
-$mpdf->Output('Orden_Aterrizaje_' . $id_orden . '.pdf', 'I');
+$mpdf->Output('Orden_Fabricacion_' . $id_orden . '.pdf', 'D');
