@@ -54,6 +54,61 @@ $aterra = $_POST["aterra"];
 include("bloqcampos.php");
 include("conexion.php");
 
+// Set the $aterra value from the POST data
+$aterra = isset($_POST["aterra"]) ? $_POST["aterra"] : '';
+
+// Initialize $image_path with a default image
+$image_path = 'imagenes/default.jpg'; // Set a default image if no match is found
+
+// Use the switch statement to set the correct image path based on $aterra
+switch ($aterra) {
+    case 'ENA':
+        $image_path = 'imagenes/ENA.jpg';
+        break;
+    case 'EXT':
+        $image_path = 'imagenes/EXT.jpg';
+        break;
+    case 'JUM':
+        $image_path = 'imagenes/JUM.jpg';
+        break;
+    case 'PDE':
+        $image_path = 'imagenes/PDE.jpg';
+        break;
+    case 'P03':
+        $image_path = 'imagenes/P03.jpg';
+        break;
+    case 'PEL':
+        $image_path = 'imagenes/PEL.jpg';
+        break;
+    case 'TRA':
+        $image_path = 'imagenes/TRA.jpg';
+        break;
+    case 'TPF':
+        $image_path = 'imagenes/TPF.jpg';
+        break;
+    case 'U01':
+        $image_path = 'imagenes/U01.jpg';
+        break;
+    case 'U03':
+        $image_path = 'imagenes/U03.jpg';
+        break;
+    case 'UPF':
+        $image_path = 'imagenes/UPF.jpg';
+        break;
+    case 'USA':
+        $image_path = 'imagenes/USA.jpg';
+        break;
+    case 'UMT':
+        $image_path = 'imagenes/UMT.jpg';
+        break;
+    case 'UPV':
+        $image_path = 'imagenes/UPV.jpg';
+        break;
+    default:
+        // Keep the default image if $aterra doesn't match any case
+        break;
+}
+
 // Consulta SQL para obtener las empresas desde la tabla
 $sql = "SELECT nombre, ruc FROM emp_main_lista";
 
@@ -404,8 +459,8 @@ $fechaHoraActual = date('Y-m-d\TH:i');
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <!-- Placeholder para la imagen -->
-                                    imagen
+                                    <!-- Display the image based on the value of $aterra -->
+                                    <img src="<?php echo htmlspecialchars($image_path); ?>" alt="Diagrama de Disposición" style="display: block; margin: 10px auto; max-width: 100%; width: auto;">
                                 </div>
                             </div>
                         </div>
