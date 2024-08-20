@@ -311,7 +311,56 @@ if ($result && $result->num_rows > 0) {
                                                 </tr>
                                                 <tr>
                                                     <td>Modelo</td>
-                                                    <td><?php echo htmlspecialchars($aterramiento); ?></td>
+                                                    <td><?php echo htmlspecialchars($aterramiento); ?> -
+                                                        <?php
+                                                        switch ($aterramiento) {
+                                                            case 'ENA':
+                                                                echo 'Enganche Automático';
+                                                                break;
+                                                            case 'EXT':
+                                                                echo 'Extensión';
+                                                                break;
+                                                            case 'JUM':
+                                                                echo 'Jumper Equipotencial';
+                                                                break;
+                                                            case 'PDE':
+                                                                echo 'Pértiga de descarga';
+                                                                break;
+                                                            case 'P03':
+                                                                echo 'Pulpo';
+                                                                break;
+                                                            case 'PEL':
+                                                                echo 'Pulpo con Elastimold';
+                                                                break;
+                                                            case 'TRA':
+                                                                echo 'Trapecio';
+                                                                break;
+                                                            case 'TPF':
+                                                                echo 'Trapecio con Pértiga Fija';
+                                                                break;
+                                                            case 'U01':
+                                                                echo 'Unipolar (1 Tiras)';
+                                                                break;
+                                                            case 'U03':
+                                                                echo 'Unipolar (3 Tiras)';
+                                                                break;
+                                                            case 'UPF':
+                                                                echo 'Unipolar con Pértiga Fija';
+                                                                break;
+                                                            case 'USA':
+                                                                echo 'Unipolar Con Seguridad Aumentada';
+                                                                break;
+                                                            case 'UMT':
+                                                                echo 'Unipolar Para Líneas de Media Tensión';
+                                                                break;
+                                                            case 'UPV':
+                                                                echo 'Unipolar para Vehículo';
+                                                                break;
+                                                            default:
+                                                                echo 'Desconocido';
+                                                                break;
+                                                        }
+                                                        ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Serie</td>
