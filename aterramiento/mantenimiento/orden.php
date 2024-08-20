@@ -745,6 +745,41 @@ $json_details = json_encode($details);
         <script>
             $(document).ready(function() {
                 var data = <?php echo $json_details; ?>;
+
+                function renderAterramiento(data) {
+                    switch (data) {
+                        case 'ENA':
+                            return 'Enganche Automático';
+                        case 'EXT':
+                            return 'Extensión';
+                        case 'JUM':
+                            return 'Jumper Equipotencial';
+                        case 'PDE':
+                            return 'Pértiga de descarga';
+                        case 'P03':
+                            return 'Pulpo';
+                        case 'PEL':
+                            return 'Pulpo con Elastimold';
+                        case 'TRA':
+                            return 'Trapecio';
+                        case 'TPF':
+                            return 'Trapecio con Pértiga Fija';
+                        case 'U01':
+                            return 'Unipolar (1 Tiras)';
+                        case 'U03':
+                            return 'Unipolar (3 Tiras)';
+                        case 'UPF':
+                            return 'Unipolar con Pértiga Fija';
+                        case 'USA':
+                            return 'Unipolar Con Seguridad Aumentada';
+                        case 'UMT':
+                            return 'Unipolar Para Líneas de Media Tensión';
+                        case 'UPV':
+                            return 'Unipolar para Vehículo';
+                        default:
+                            return 'Desconocido';
+                    }
+                }
                 var columns = [{
                         title: "Acciones",
                         data: null,
@@ -776,7 +811,8 @@ $json_details = json_encode($details);
                     },
                     {
                         title: "Aterramiento",
-                        data: "Aterramiento"
+                        data: "Aterramiento",
+                        render: renderAterramiento // Usamos la función renderAterramiento aquí
                     },
                     {
                         title: "Marca",
