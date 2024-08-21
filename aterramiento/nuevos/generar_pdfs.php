@@ -305,10 +305,22 @@ while ($row_series = $result_series->fetch_assoc()) {
     $html .= '<p style="font-size: 10px; text-align: left; margin-top: 20px; padding-left: 45px;">RECOMENDACIONES:</p>';
     $html .= '<p style="font-size: 10px; text-align: left; padding-left: 45px;">Se recomienda hacer una prueba similar por lo menos una vez al año.</p>';
     $html .= '<p style="font-size: 10px; text-align: left; padding-left: 45px;">APROBADO POR:</p>';
-    $html .= '<div style="font-size: 10px; text-align: center; margin-top: 40px; position: relative;">';
-    $html .= '<hr style="width: 200px; border: 1px solid black; margin: 0 auto;">';
-    $html .= '<p>Eduardo Fernandez U.<br>Dpto. Calibraciones</p>';
-    $html .= '<img src="imagenes/SELLO.png" alt="Sello" style="position: absolute; right: 0; top: 0; height: 50px;">';
+
+    // Añadir tabla para centrar el logo y el texto en la misma línea
+    $html .= '<div style="text-align: center; margin-top: 10px;">'; // Contenedor centrado
+    $html .= '<table style="margin: 0 auto; border-collapse: collapse; display: inline-block;">';
+    $html .= '<tr style="vertical-align: middle; text-align: center;">';
+    $html .= '<td style="padding-right: 5px;"><img src="../nuevos/imagenes/LOGO.png" alt="Firma" style="height: 50px;"></td>';
+    $html .= '<td style="padding-left: 5px; text-align: left;"><p style="font-size: 10px; margin: 0;">FERNANDEZ ULFEE<br>WILLIANM EDUARDO<br>' . date('Y-m-d', strtotime($order_details['FechaInforme'])) . '</p></td>';
+    $html .= '</tr>';
+    $html .= '</table>';
+    $html .= '</div>';
+
+    // Ajustar espacio y posición del sello
+    $html .= '<div style="font-size: 10px; text-align: center; margin-top: 10px; position: relative;">';
+    $html .= '<hr style="width: 200px; border: 1px solid black; margin: 5px auto 0 auto;">';
+    $html .= '<p style="margin-top: 5px;">Eduardo Fernandez U.<br>Dpto. Calibraciones</p>';
+    $html .= '<img src="../nuevos/imagenes/SELLO.png" alt="Sello" style="position: absolute; right: 0; top: 0; height: 50px;">';
     $html .= '</div>';
 
     $mpdf = new \Mpdf\Mpdf();
