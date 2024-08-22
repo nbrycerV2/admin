@@ -28,3 +28,12 @@ Este módulo gestiona los equipos dieléctricos de la empresa. Al igual que el s
    ```bash
    git clone https://github.com/nbrycerV2/admin.git
    ```
+2. Configura tu entorno de desarrollo local (XAMPP, WAMP, etc.).
+3. Importa la base de datos utilizando el archivo database.sql incluido.
+4. Accede al sistema a través de http://localhost/tu-proyecto.
+
+## Características
+
+- Listado completo y editable de empresas.
+- Gestión de nuevos sistemas de aterramientos y seguimiento de los existentes.
+- Gestión de nuevos equipos dieléctricos y su mantenimiento.
