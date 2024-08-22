@@ -29,7 +29,12 @@ Este módulo gestiona los equipos dieléctricos de la empresa. Al igual que el s
    git clone https://github.com/nbrycerV2/admin.git
    ```
 2. Configura tu entorno de desarrollo local (XAMPP, WAMP, etc.).
-3. Importa la base de datos utilizando el archivo database.sql incluido.
+3. Importa la base de datos utilizando los archivos sql incluido en la carpeta db_structure (solo estructura, llenar datos en tabla_user con usuarios para que funcione algunas secciones del codigo).
+
+- Se incluye archivo llamado sistema_dielectricos2.sql
+- Se incluye archivo emp_main_lista.sql (Es posible que sea necesario cambiar los archivos conexion.php para poder usar esta tabla)
+- Se incluye archivo tabla_user (Es posible que sea necesario cambiar los archivos conexion.php para poder usar esta tabla)
+
 4. Accede al sistema a través de http://localhost/tu-proyecto.
 
 ## Características
@@ -37,3 +42,7 @@ Este módulo gestiona los equipos dieléctricos de la empresa. Al igual que el s
 - Listado completo y editable de empresas.
 - Gestión de nuevos sistemas de aterramientos y seguimiento de los existentes.
 - Gestión de nuevos equipos dieléctricos y su mantenimiento.
+
+## Usado por
+
+Este proyecto es usado por la compañia Logytec S.A.
