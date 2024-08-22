@@ -1311,10 +1311,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
             $html .= '<div class="row">El par de guantes se encuentra en óptimas condiciones de operación según pruebas realizadas.</div>';
             $html .= '<div class="row" style="font-weight: bold;">7. Recomendaciones:</div>';
             $html .= '<div class="row">Se recomienda realizar su próxima verificación en un plazo no mayor a 6 meses.</div>';
-            $html .= '<p><p><p><p><table align ="center">
-                    <tr><td></td></tr><td><img src="SELLO_LABORATORIO_PNG.png"></td>
-                    <tr><td style="border-top:0.1pt solid #000000 ">Eduardo Fernandez U.</td></tr>
-                    </table>';
+            // Añadir tabla para centrar el logo y el texto en la misma línea
+            $html .= '<div style="text-align: center; margin-top: 10px;">'; // Contenedor centrado
+            $html .= '<table style="margin: 0 auto; border-collapse: collapse; display: inline-block;">';
+            $html .= '<tr style="vertical-align: middle; text-align: center;">';
+            $html .= '<td style="padding-right: 5px;"><img src="./img/LOGO.png" alt="Firma" style="height: 50px;"></td>';
+            $html .= '<td style="padding-left: 5px; text-align: left;"><p style="font-size: 10px; margin: 0;">FERNANDEZ ULFEE<br>WILLIANM EDUARDO<br>' . $f_informe . '</p></td>';
+            $html .= '</tr>';
+            $html .= '</table>';
+            $html .= '</div>';
+
+            // Ajustar espacio y posición del sello
+            $html .= '<div style="font-size: 10px; text-align: center; margin-top: 10px; position: relative;">';
+            $html .= '<hr style="width: 200px; border: 1px solid black; margin: 5px auto 0 auto;">';
+            $html .= '<p style="margin-top: 5px;">Eduardo Fernandez U.<br>Dpto. Calibraciones</p>';
+            $html .= '<img src="SELLO_LABORATORIO_PNG.png" alt="Sello" style="position: absolute; right: 0; top: 0; height: 50px;">';
+            $html .= '</div>';
 
             $html .= '</div>'; // Cierra el contenedor
             $mpdf->WriteHTML($html);
@@ -1549,10 +1561,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
             $html .= '<div class="row">La manta se encuentra en óptimas condiciones de operación según pruebas realizadas.</div>';
             $html .= '<div class="row" style="font-weight: bold;">7. Recomendaciones:</div>';
             $html .= '<div class="row">Se recomienda realizar su próxima verificación en un plazo no mayor a 1 año.</div>';
-            $html .= '<p><p><p><p><table align ="center">
-                    <tr><td></td></tr><td><img src="SELLO_LABORATORIO_PNG.png"></td>
-                    <tr><td style="border-top:0.1pt solid #000000 ">Eduardo Fernandez U.</td></tr>
-                    </table>';
+            // Añadir tabla para centrar el logo y el texto en la misma línea
+            $html .= '<div style="text-align: center; margin-top: 10px;">'; // Contenedor centrado
+            $html .= '<table style="margin: 0 auto; border-collapse: collapse; display: inline-block;">';
+            $html .= '<tr style="vertical-align: middle; text-align: center;">';
+            $html .= '<td style="padding-right: 5px;"><img src="./img/LOGO.png" alt="Firma" style="height: 50px;"></td>';
+            $html .= '<td style="padding-left: 5px; text-align: left;"><p style="font-size: 10px; margin: 0;">FERNANDEZ ULFEE<br>WILLIANM EDUARDO<br>' . $f_informe . '</p></td>';
+            $html .= '</tr>';
+            $html .= '</table>';
+            $html .= '</div>';
+
+            // Ajustar espacio y posición del sello
+            $html .= '<div style="font-size: 10px; text-align: center; margin-top: 10px; position: relative;">';
+            $html .= '<hr style="width: 200px; border: 1px solid black; margin: 5px auto 0 auto;">';
+            $html .= '<p style="margin-top: 5px;">Eduardo Fernandez U.<br>Dpto. Calibraciones</p>';
+            $html .= '<img src="SELLO_LABORATORIO_PNG.png" alt="Sello" style="position: absolute; right: 0; top: 0; height: 50px;">';
+            $html .= '</div>';
 
             $html .= '</div>'; // Cierra el contenedor
             $mpdf->WriteHTML($html);
@@ -1784,13 +1808,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
             $html .= '<div class="row" style="font-weight: bold;">5. Lugar de calibración:</div>';
             $html .= '<div class="row">Laboratorio de alta tensión de Logytec S.A.</div>';
             $html .= '<div class="row" style="font-weight: bold;">6. Conclusión:</div>';
-            $html .= '<div class="row">La Banqueta se encuentra en óptimas condiciones de operación según pruebas realizadas.</div>';
+            $html .= '<div class="row">La banqueta se encuentra en óptimas condiciones de operación según pruebas realizadas.</div>';
             $html .= '<div class="row" style="font-weight: bold;">7. Recomendaciones:</div>';
             $html .= '<div class="row">Se recomienda realizar su próxima verificación en un plazo no mayor a 1 año.</div>';
-            $html .= '<p><p><p><p><table align ="center">
-                    <tr><td></td></tr><td><img src="SELLO_LABORATORIO_PNG.png"></td>
-                    <tr><td style="border-top:0.1pt solid #000000 ">Eduardo Fernandez U.</td></tr>
-                    </table>';
+            // Añadir tabla para centrar el logo y el texto en la misma línea
+            $html .= '<div style="text-align: center; margin-top: 10px;">'; // Contenedor centrado
+            $html .= '<table style="margin: 0 auto; border-collapse: collapse; display: inline-block;">';
+            $html .= '<tr style="vertical-align: middle; text-align: center;">';
+            $html .= '<td style="padding-right: 5px;"><img src="./img/LOGO.png" alt="Firma" style="height: 50px;"></td>';
+            $html .= '<td style="padding-left: 5px; text-align: left;"><p style="font-size: 10px; margin: 0;">FERNANDEZ ULFEE<br>WILLIANM EDUARDO<br>' . $f_informe . '</p></td>';
+            $html .= '</tr>';
+            $html .= '</table>';
+            $html .= '</div>';
+
+            // Ajustar espacio y posición del sello
+            $html .= '<div style="font-size: 10px; text-align: center; margin-top: 10px; position: relative;">';
+            $html .= '<hr style="width: 200px; border: 1px solid black; margin: 5px auto 0 auto;">';
+            $html .= '<p style="margin-top: 5px;">Eduardo Fernandez U.<br>Dpto. Calibraciones</p>';
+            $html .= '<img src="SELLO_LABORATORIO_PNG.png" alt="Sello" style="position: absolute; right: 0; top: 0; height: 50px;">';
+            $html .= '</div>';
 
             $html .= '</div>'; // Cierra el contenedor
             $mpdf->WriteHTML($html);
@@ -1992,11 +2028,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
 
             $html .= '</div>';
             $html .= '<div class="row" style="font-weight: bold;">5. Conclusión:</div>';
-            $html .= '<div class="row">La Banqueta se encuentra en óptimas condiciones de operación según pruebas realizadas.</div>';
-            $html .= '<p><p><p><p><table align ="center">
-            <tr><td></td></tr><td><img src="SELLO_LABORATORIO_PNG.png"></td>
-            <tr><td style="border-top:0.1pt solid #000000 ">Eduardo Fernandez U.</td></tr>
-            </table>';
+            $html .= '<div class="row">La pertiga se encuentra en óptimas condiciones de operación según pruebas realizadas.</div>';
+            // Añadir tabla para centrar el logo y el texto en la misma línea
+            $html .= '<div style="text-align: center; margin-top: 10px;">'; // Contenedor centrado
+            $html .= '<table style="margin: 0 auto; border-collapse: collapse; display: inline-block;">';
+            $html .= '<tr style="vertical-align: middle; text-align: center;">';
+            $html .= '<td style="padding-right: 5px;"><img src="./img/LOGO.png" alt="Firma" style="height: 50px;"></td>';
+            $html .= '<td style="padding-left: 5px; text-align: left;"><p style="font-size: 10px; margin: 0;">FERNANDEZ ULFEE<br>WILLIANM EDUARDO<br>' . $f_informe . '</p></td>';
+            $html .= '</tr>';
+            $html .= '</table>';
+            $html .= '</div>';
+
+            // Ajustar espacio y posición del sello
+            $html .= '<div style="font-size: 10px; text-align: center; margin-top: 10px; position: relative;">';
+            $html .= '<hr style="width: 200px; border: 1px solid black; margin: 5px auto 0 auto;">';
+            $html .= '<p style="margin-top: 5px;">Eduardo Fernandez U.<br>Dpto. Calibraciones</p>';
+            $html .= '<img src="SELLO_LABORATORIO_PNG.png" alt="Sello" style="position: absolute; right: 0; top: 0; height: 50px;">';
+            $html .= '</div>';
 
             $html .= '</div>'; // Cierra el contenedor
             $mpdf->WriteHTML($html);
@@ -2263,13 +2311,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
             $html .= '<div class="row" style="font-weight: bold;">5. Lugar de calibración:</div>';
             $html .= '<div class="row">Laboratorio de alta tensión de Logytec S.A.</div>';
             $html .= '<div class="row" style="font-weight: bold;">6. Conclusión:</div>';
-            $html .= '<div class="row">El par de guantes se encuentra en óptimas condiciones de operación según pruebas realizadas.</div>';
+            $html .= '<div class="row">El par de mangas se encuentra en óptimas condiciones de operación según pruebas realizadas.</div>';
             $html .= '<div class="row" style="font-weight: bold;">7. Recomendaciones:</div>';
             $html .= '<div class="row">Se recomienda realizar su próxima verificación en un plazo no mayor a 6 meses.</div>';
-            $html .= '<p><p><p><p><table align ="center">
-                    <tr><td></td></tr><td><img src="SELLO_LABORATORIO_PNG.png"></td>
-                    <tr><td style="border-top:0.1pt solid #000000 ">Eduardo Fernandez U.</td></tr>
-                    </table>';
+            // Añadir tabla para centrar el logo y el texto en la misma línea
+            $html .= '<div style="text-align: center; margin-top: 10px;">'; // Contenedor centrado
+            $html .= '<table style="margin: 0 auto; border-collapse: collapse; display: inline-block;">';
+            $html .= '<tr style="vertical-align: middle; text-align: center;">';
+            $html .= '<td style="padding-right: 5px;"><img src="./img/LOGO.png" alt="Firma" style="height: 50px;"></td>';
+            $html .= '<td style="padding-left: 5px; text-align: left;"><p style="font-size: 10px; margin: 0;">FERNANDEZ ULFEE<br>WILLIANM EDUARDO<br>' . $f_informe . '</p></td>';
+            $html .= '</tr>';
+            $html .= '</table>';
+            $html .= '</div>';
+
+            // Ajustar espacio y posición del sello
+            $html .= '<div style="font-size: 10px; text-align: center; margin-top: 10px; position: relative;">';
+            $html .= '<hr style="width: 200px; border: 1px solid black; margin: 5px auto 0 auto;">';
+            $html .= '<p style="margin-top: 5px;">Eduardo Fernandez U.<br>Dpto. Calibraciones</p>';
+            $html .= '<img src="SELLO_LABORATORIO_PNG.png" alt="Sello" style="position: absolute; right: 0; top: 0; height: 50px;">';
+            $html .= '</div>';
 
             $html .= '</div>'; // Cierra el contenedor
             $mpdf->WriteHTML($html);
