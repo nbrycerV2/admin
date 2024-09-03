@@ -166,22 +166,7 @@
                                         </select>
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Talla</span>
-                                        <select type="text" class="form-control" placeholder="Talla" name="talla"
-                                            id="talla" aria-describedby="basic-addon1">
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="8.5">8.5</option>
-                                            <option value="9">9</option>
-                                            <option value="9.5">9.5</option>
-                                            <option value="10">10</option>
-                                            <option value="10.5">10.5</option>
-                                            <option value="11">11</option>
-                                        </select>
-                                    </div>
-                                </td>
+
                             </tr>
                             <tr>
                                 <td>
