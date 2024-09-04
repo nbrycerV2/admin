@@ -814,8 +814,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
 
         $año = date('y');
         $mes = date('m');
-        $serie_nuevo = generarSerie($año, $mes, 1);
-        //$serie_mantenimiento = generarSerie($año, $mes, 0);
+        //$serie_nuevo = generarSerie($año, $mes, 1);
+        $serie_mantenimiento = generarSerie($año, $mes, 0);
 
         $sql_max_serie = "SELECT MAX(serie_guante) AS max_serie FROM orden_item_m";
         $result_max_serie = $conexion->query($sql_max_serie);
@@ -834,7 +834,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
             echo "Número de IDs con guante_serie NULL: $num_null_ids\n";
 
             for ($i = 0; $i < $num_null_ids; $i++) {
-                $serie_actualizada = ($max_serie > $serie_nuevo) ? ($max_serie + $i + 1) : ($serie_nuevo + $i);
+                $serie_actualizada = ($max_serie > $serie_mantenimiento) ? ($max_serie + $i + 1) : ($serie_mantenimiento + $i);
                 $id_items = $id_array[$i]['id'];
                 echo "Nuevo número de serie: $serie_actualizada\n";
                 echo "ID: $id_items\n";
@@ -858,8 +858,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
 
         $año = date('y');
         $mes = date('m');
-        $serie_nuevo = generarSerie($año, $mes, 3);
-        //$serie_mantenimiento = generarSerie($año, $mes, 2);
+        //$serie_nuevo = generarSerie($año, $mes, 3);
+        $serie_mantenimiento = generarSerie($año, $mes, 2);
 
         $sql_max_serie = "SELECT MAX(serie_manta) AS max_serie FROM orden_item_m";
         $result_max_serie = $conexion->query($sql_max_serie);
@@ -878,7 +878,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
             echo "Número de IDs con guante_serie NULL: $num_null_ids\n";
 
             for ($i = 0; $i < $num_null_ids; $i++) {
-                $serie_actualizada = ($max_serie > $serie_nuevo) ? ($max_serie + $i + 1) : ($serie_nuevo + $i);
+                $serie_actualizada = ($max_serie > $serie_mantenimiento) ? ($max_serie + $i + 1) : ($serie_mantenimiento + $i);
                 $id_items = $id_array[$i]['id'];
                 echo "Nuevo número de serie: $serie_actualizada\n";
                 echo "ID: $id_items\n";
@@ -902,8 +902,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
 
         $año = date('y');
         $mes = date('m');
-        $serie_nuevo = generarSerie($año, $mes, 5);
-        //$serie_mantenimiento = generarSerie($año, $mes, 4);
+        //$serie_mantenimiento = generarSerie($año, $mes, 5);
+        $serie_mantenimiento = generarSerie($año, $mes, 4);
 
         $sql_max_serie = "SELECT MAX(serie_banqueta) AS max_serie FROM orden_item_m";
         $result_max_serie = $conexion->query($sql_max_serie);
@@ -922,7 +922,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
             echo "Número de IDs con guante_serie NULL: $num_null_ids\n";
 
             for ($i = 0; $i < $num_null_ids; $i++) {
-                $serie_actualizada = ($max_serie > $serie_nuevo) ? ($max_serie + $i + 1) : ($serie_nuevo + $i);
+                $serie_actualizada = ($max_serie > $serie_mantenimiento) ? ($max_serie + $i + 1) : ($serie_mantenimiento + $i);
                 $id_items = $id_array[$i]['id'];
                 echo "Nuevo número de serie: $serie_actualizada\n";
                 echo "ID: $id_items\n";
@@ -946,8 +946,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
 
         $año = date('y');
         $mes = date('m');
-        $serie_nuevo = generarSerie($año, $mes, 7);
-        //$serie_mantenimiento = generarSerie($año, $mes, 6);
+        //$serie_mantenimiento = generarSerie($año, $mes, 7);
+        $serie_mantenimiento = generarSerie($año, $mes, 6);
 
         $sql_max_serie = "SELECT MAX(serie_pertiga) AS max_serie FROM orden_item_m";
         $result_max_serie = $conexion->query($sql_max_serie);
@@ -966,7 +966,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
             echo "Número de IDs con guante_serie NULL: $num_null_ids\n";
 
             for ($i = 0; $i < $num_null_ids; $i++) {
-                $serie_actualizada = ($max_serie > $serie_nuevo) ? ($max_serie + $i + 1) : ($serie_nuevo + $i);
+                $serie_actualizada = ($max_serie > $serie_mantenimiento) ? ($max_serie + $i + 1) : ($serie_mantenimiento + $i);
                 $id_items = $id_array[$i]['id'];
                 echo "Nuevo número de serie: $serie_actualizada\n";
                 echo "ID: $id_items\n";
@@ -990,8 +990,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
 
         $año = date('y');
         $mes = date('m');
-        $serie_nuevo = generarSerie($año, $mes, 9);
-        //$serie_mantenimiento = generarSerie($año, $mes, 8);
+        //$serie_mantenimiento = generarSerie($año, $mes, 9);
+        $serie_mantenimiento = generarSerie($año, $mes, 8);
 
         $sql_max_serie = "SELECT MAX(serie_manga) AS max_serie FROM orden_item_m";
         $result_max_serie = $conexion->query($sql_max_serie);
@@ -1010,7 +1010,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
             echo "Número de IDs con guante_serie NULL: $num_null_ids\n";
 
             for ($i = 0; $i < $num_null_ids; $i++) {
-                $serie_actualizada = ($max_serie > $serie_nuevo) ? ($max_serie + $i + 1) : ($serie_nuevo + $i);
+                $serie_actualizada = ($max_serie > $serie_mantenimiento) ? ($max_serie + $i + 1) : ($serie_mantenimiento + $i);
                 $id_items = $id_array[$i]['id'];
                 echo "Nuevo número de serie: $serie_actualizada\n";
                 echo "ID: $id_items\n";
