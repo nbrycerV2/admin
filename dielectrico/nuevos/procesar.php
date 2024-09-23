@@ -2021,7 +2021,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
                 <thead><tr><th>Pertiga</th><th>Estado físico</th><th>Resultado del ensayo</th><th>Resultado final</th></tr></thead>';
 
             for ($i = 0; $i < $talla; $i++) {
-                $html .= '<tbody><tr><td>Cuerpo ' . $i . '</td><td>Aprobado</td><td>Aprobado</td><td>Aprobado</td></tr>';
+                $html .= '<tbody><tr><td>Cuerpo ' . $i+1 . '</td><td>Aprobado</td><td>Aprobado</td><td>Aprobado</td></tr>';
             }
 
             $html .= '</table>';
@@ -2141,7 +2141,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
                 $valor_izq[] = $row["valor_izq"];
                 $valor_der[] = $row["valor_der"];
                 $otro[] = $row["otro"];
-                $serie_guante[] = $row["serie_guante"];
+                $serie_guante[] = $row["serie_manga"];
                 $serie_edit[] = $row["serie_edit"];
 
                 // Puedes continuar de la misma manera para otras columnas que necesites
@@ -2256,7 +2256,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
               <tr>
                 <th class="tg-uqo3">Lado</th>
                 <th class="tg-uqo3">Estado Físico</th>
-                <th class="tg-uqo3">Con Inflador</th>
+                
                 <th class="tg-uqo3">Estado Físico</th>
               </tr>
             </thead>
@@ -2264,13 +2264,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
               <tr>
                 <td>IZQ</td>
                 <td>OK</td>
-                <td>OK</td>
+                
                 <td>APTO</td>
               </tr>
               <tr>
                 <td>DER</td>
                 <td>OK</td>
-                <td>OK</td>
+                
                 <td>APTO</td>
               </tr>
             </tbody>

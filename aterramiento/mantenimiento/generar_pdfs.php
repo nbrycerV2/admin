@@ -46,11 +46,17 @@ if ($result_series->num_rows === 0) {
 if ($zip->open($zipFilePath, ZipArchive::CREATE) !== TRUE) {
     exit("Cannot open <$zipFilePath>\n");
 }
+// Inicializa una variable para el consecutivo
+$consecutivo = 1;
 
 while ($row_series = $result_series->fetch_assoc()) {
     $serie = $row_series['Serie'];
     $aterramiento = $row_series['Aterramiento'];
     $marca = $row_series['Marca'];
+
+    // Genera el número de orden con el consecutivo
+    $id_orden_consecutivo = $id_orden . '-' . str_pad($consecutivo, 0, '0', STR_PAD_LEFT);
+
     // Set the type and image path based on TipoAterra
     switch ($aterramiento) {
         case 'ENA':
@@ -113,6 +119,13 @@ while ($row_series = $result_series->fetch_assoc()) {
             $informe_type = 'Desconocido';
             break;
     }
+    // Define el nombre del archivo PDF con el consecutivo actual
+    $pdfFileName = "{$id_orden}-{$consecutivo} {$cliente} {$informe_type}.pdf";
+    $pdfFilePath = $temporaryFolder . $pdfFileName;
+
+    // Incrementa el consecutivo para la siguiente iteración
+    $consecutivo++;
+
 
     // Query to get the data for each series
     $query_data = "
@@ -217,7 +230,7 @@ while ($row_series = $result_series->fetch_assoc()) {
         </td>
     </tr>
     <tr>
-        <td class="info-cell" style="font-size: 12px;">Nro ' . htmlspecialchars($id_orden) . '</td> <!-- Reduce font-size -->
+        <td class="info-cell" style="font-size: 12px;">Nro ' . htmlspecialchars($id_orden_consecutivo) . '</td>
         <td class="date-cell" style="font-size: 12px;">Fecha: ' . date('Y-m-d', strtotime($order_details['FechaInforme'])) . '</td> <!-- Reduce font-size -->
     </tr>
 </table>';
@@ -324,22 +337,25 @@ while ($row_series = $result_series->fetch_assoc()) {
     $html .= '</table>';
     $html .= '</div>';
 
-    // Ajustar espacio y posición del sello
-    $html .= '<div style="font-size: 10px; text-align: center; margin-top: 10px; position: relative;">';
-    $html .= '<hr style="width: 200px; border: 1px solid black; margin: 5px auto 0 auto;">';
-    $html .= '<p style="margin-top: 5px;">Eduardo Fernandez U.<br>Dpto. Calibraciones</p>';
-    $html .= '<img src="../nuevos/imagenes/SELLO.png" alt="Sello" style="position: absolute; right: 0; top: 0; height: 50px;">';
-    $html .= '</div>';
+// Ajustar espacio y posición del sello
+$html .= '<div style="font-size: 10px; text-align: center; margin-top: 10px; position: relative;">';
+$html .= '<hr style="width: 200px; border: 1px solid black; margin: 5px auto 0 auto;">';
+$html .= '<p style="margin-top: 5px;">Eduardo Fernandez U.<br>Dpto. Calibraciones</p>';
+$html .= '<img src="../nuevos/imagenes/SELLO.png" alt="Sello" style="position: absolute; right: 0; top: 0; height: 50px;">';
+$html .= '</div>';
 
+$mpdf = new \Mpdf\Mpdf();
+$mpdf->WriteHTML($html);
 
-    $mpdf = new \Mpdf\Mpdf();
-    $mpdf->WriteHTML($html);
+// Verifica si el archivo PDF se creó correctamente antes de agregarlo al ZIP
+$mpdf->Output($pdfFilePath, \Mpdf\Output\Destination::FILE);
 
-    $pdfFilePath = $temporaryFolder . "Informe_Serie_$serie.pdf";
-    $mpdf->Output($pdfFilePath, \Mpdf\Output\Destination::FILE);
-
-    // Add the PDF to the ZIP file
-    $zip->addFile($pdfFilePath, "Informe_Serie_$serie.pdf");
+if (file_exists($pdfFilePath)) {
+    $zip->addFile($pdfFilePath, $pdfFileName);
+} else {
+    // Manejo de error si el archivo PDF no se creó correctamente
+    echo "Error: No se pudo crear el archivo PDF para la serie {$serie}.";
+}
 }
 
 $zip->close();

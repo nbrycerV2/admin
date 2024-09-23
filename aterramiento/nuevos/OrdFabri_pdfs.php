@@ -355,11 +355,15 @@ if (!empty($data_details['SeccionA'])) {
     ) {
         $ValorSeccionA  = '2';
     } elseif (
-        $order_details['TipoAterra'] === 'ENA' || $order_details['TipoAterra'] === 'EXT'
+        $order_details['TipoAterra'] === 'EXT'
         || $order_details['TipoAterra'] === 'JUM' || $order_details['TipoAterra'] === 'PDE'
         || $order_details['TipoAterra'] === 'PEL' || $order_details['TipoAterra'] === 'U01'
     ) {
         $ValorSeccionA  = '1';
+    } elseif (
+        $order_details['TipoAterra'] === 'ENA'
+    ) {
+        $ValorSeccionA  = '2';
     } else {
         $ValorSeccionA = '';
     }
@@ -368,7 +372,7 @@ if (!empty($data_details['SeccionA'])) {
                 <th>Sección A</th>
                 <td> Cable ' . htmlspecialchars($data_details['SeccionA']) . '</td>
                 <td>' . htmlspecialchars($data_details['LongitudA'] * $ValorSeccionA) . ' metros</td> <!-- Valor Unitario de Longitud A -->
-                <td>' . htmlspecialchars($data_details['LongitudA'] * $cantidad * $ValorSeccionA) . ' metros</td> <!-- Total * Cantidad -->
+                <td>' . htmlspecialchars(($data_details['LongitudA'] * $cantidad) * $ValorSeccionA) . ' metros</td> <!-- Total * Cantidad -->
                 <td >□</td> <!-- Columna vacía -->
             </tr>';
 }
@@ -376,7 +380,9 @@ if (!empty($data_details['TLinea'])) {
     // Determinar el valor de la Columna Vacía 1
     if ($order_details['TipoAterra'] === 'PDE') {
         $ValorTLinea = '1';
-    } elseif ($order_details['TipoAterra'] === 'ENA' || $order_details['TipoAterra'] === 'TRA') {
+    } elseif ($order_details['TipoAterra'] === 'ENA') {
+        $ValorTLinea = '3';
+    } elseif ($order_details['TipoAterra'] === 'TRA') {
         $ValorTLinea = '4';
     } elseif (
         $order_details['TipoAterra'] === 'EXT' || $order_details['TipoAterra'] === 'JUM'
@@ -507,12 +513,18 @@ if (!empty($data_details['SeccionX'])) {
             </tr>';
 }
 if (!empty($data_details['TerminalX'])) {
+    // Determinar el valor de la Columna Vacía 1
+    if ($order_details['TipoAterra'] === 'ENA') {
+        $TerminalX = '1';
+    } else {
+        $TerminalX = '';
+    }
     $html .= '
             <tr>
                 <th>Terminal X</th>
                 <td>' . htmlspecialchars($data_details['TerminalX']) . '</td>
-                <td></td> <!-- Columna vacía -->
-                <td></td> <!-- Columna vacía -->
+                <td>' . htmlspecialchars($TerminalX) . '</td> <!-- Columna vacía -->
+                <td>' . htmlspecialchars($TerminalX * $cantidad) . '</td> <!-- Columna vacía -->
                 <td >□</td> <!-- Columna vacía -->
             </tr>';
 }

@@ -220,6 +220,14 @@
                                 </td>
                             </tr>
                             <tr>
+                            <td>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Valor Der.</span>
+                                        <input type="text" class="form-control" name="valor_der" id="valor_der"
+                                            placeholder="Valor Der." aria-label="Username"
+                                            aria-describedby="basic-addon1">
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Valor Izq.</span>
@@ -228,14 +236,7 @@
                                             aria-describedby="basic-addon1">
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Valor Der.</span>
-                                        <input type="text" class="form-control" name="valor_der" id="valor_der"
-                                            placeholder="Valor Der." aria-label="Username"
-                                            aria-describedby="basic-addon1">
-                                    </div>
-                                </td>
+                                
                             </tr>
                             <tr>
                                 <td>

@@ -240,11 +240,11 @@
                 },
                 columns: [{
                         data: null,
+                         //<button class="btn btn-danger btn-sm2" onclick="borrar(' + row.idOrdAterra + ')">Borrar</button> DESPUES LE AGREGO
                         render: function(data, type, row) {
                             return '<a class="btn btn-primary btn-sm2" href="orden.php?idOrdAterra=' +
                                 row.idOrdAterra +
-                                '">Abrir</a> <button class="btn btn-danger btn-sm2" onclick="borrar(' +
-                                row.idOrdAterra + ')">Borrar</button>';
+                                '">Abrir</a>';
                         }
                     },
                     {

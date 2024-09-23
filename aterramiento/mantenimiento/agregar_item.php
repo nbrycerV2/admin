@@ -29,61 +29,61 @@ if ($Aterramiento === 'ENA') {
 
 // Definir el valor de LongitudTotal basado en TipoAterra
 if ($Aterramiento === 'ENA') {
-    $LongitudTotal = "0|0|0";
+    $LongitudTotal = "||";
 } elseif (in_array($Aterramiento, ['EXT', 'JUM', 'PDE', 'U01', 'UPV'])) {
-    $LongitudTotal = "0";
+    $LongitudTotal = "";
 } elseif (in_array($Aterramiento, ['P03'])) {
-    $LongitudTotal = "0|0|0";
+    $LongitudTotal = "||";
 } elseif (in_array($Aterramiento, ['PEL'])) {
-    $LongitudTotal = "0|0|0";
+    $LongitudTotal = "||";
 } elseif (in_array($Aterramiento, ['TRA', 'TPF'])) {
-    $LongitudTotal = "0|0";
+    $LongitudTotal = "|";
 } elseif (in_array($Aterramiento, ['U03', 'UPF'])) {
-    $LongitudTotal = "0|0|0";
+    $LongitudTotal = "||";
 } elseif (in_array($Aterramiento, ['USA'])) {
-    $LongitudTotal = "0|0|0";
+    $LongitudTotal = "||";
 } elseif (in_array($Aterramiento, ['UMT'])) {
-    $LongitudTotal = "0|0|0";
+    $LongitudTotal = "||";
 } else {
     $LongitudTotal = 0;
 }
 
 // Definir el valor de LongitudTotal basado en TipoAterra
 if ($Aterramiento === 'ENA') {
-    $Seccion = "0|0|0";
+    $Seccion = "||";
 } elseif (in_array($Aterramiento, ['EXT', 'JUM', 'PDE', 'U01', 'UPV'])) {
-    $Seccion = "0";
+    $Seccion = "";
 } elseif (in_array($Aterramiento, ['P03'])) {
-    $Seccion = "0|0|0";
+    $Seccion = "||";
 } elseif (in_array($Aterramiento, ['PEL'])) {
-    $Seccion = "0|0|0";
+    $Seccion = "||";
 } elseif (in_array($Aterramiento, ['TRA', 'TPF'])) {
-    $Seccion = "0|0";
+    $Seccion = "|";
 } elseif (in_array($Aterramiento, ['U03', 'UPF'])) {
-    $Seccion = "0|0|0";
+    $Seccion = "||";
 } elseif (in_array($Aterramiento, ['USA'])) {
-    $Seccion = "0|0|0";
+    $Seccion = "||";
 } elseif (in_array($Aterramiento, ['UMT'])) {
-    $Seccion = "0|0|0";
+    $Seccion = "||";
 } else {
     $Seccion = 0;
 }
 
 // Definir el valor de  MaxPermisible basado en TipoAterra
 if ($Aterramiento === 'ENA') {
-    $MaxPermisible = "0|0|0";
+    $MaxPermisible = "||";
 } elseif (in_array($Aterramiento, ['EXT', 'JUM', 'PDE', 'U01', 'UPV'])) {
-    $MaxPermisible = "0";
+    $MaxPermisible = "";
 } elseif (in_array($Aterramiento, ['P03', 'PEL'])) {
-    $MaxPermisible = "0|0|0";
+    $MaxPermisible = "||";
 } elseif (in_array($Aterramiento, ['TRA', 'TPF'])) {
-    $MaxPermisible = "0|0";
+    $MaxPermisible = "|";
 } elseif (in_array($Aterramiento, ['U03', 'UPF'])) {
-    $MaxPermisible = "0|0|0";
+    $MaxPermisible = "||";
 } elseif (in_array($Aterramiento, ['USA'])) {
-    $MaxPermisible = "0|0|0";
+    $MaxPermisible = "||";
 } elseif (in_array($Aterramiento, ['UMT'])) {
-    $MaxPermisible = "0|0|0";
+    $MaxPermisible = "||";
 } else {
     $MaxPermisible = 0;
 }
@@ -91,19 +91,19 @@ if ($Aterramiento === 'ENA') {
 
 // Definir el valor de ValorMedido basado en TipoAterra
 if ($Aterramiento === 'ENA') {
-    $ValorMedido = "0|0|0";
+    $ValorMedido = "||";
 } elseif (in_array($Aterramiento, ['EXT', 'JUM', 'PDE', 'U01', 'UPV'])) {
-    $ValorMedido = "0";
+    $ValorMedido = "";
 } elseif (in_array($Aterramiento, ['P03', 'PEL'])) {
-    $ValorMedido = "0|0|0";
+    $ValorMedido = "||";
 } elseif (in_array($Aterramiento, ['TRA', 'TPF'])) {
-    $ValorMedido = "0|0";
+    $ValorMedido = "|";
 } elseif (in_array($Aterramiento, ['U03', 'UPF'])) {
-    $ValorMedido = "0|0|0";
+    $ValorMedido = "||";
 } elseif (in_array($Aterramiento, ['USA'])) {
-    $ValorMedido = "0|0|0";
+    $ValorMedido = "||";
 } elseif (in_array($Aterramiento, ['UMT'])) {
-    $ValorMedido = "0|0|0";
+    $ValorMedido = "||";
 } else {
     $ValorMedido = 0;
 }
@@ -129,19 +129,19 @@ if ($Aterramiento === 'ENA') {
 
 // Definir el valor de la Corriente Aplicada basado en TipoAterra
 if ($Aterramiento === 'ENA') {
-    $CorrienteAplicada = "0|0|0";
+    $CorrienteAplicada = "||";
 } elseif (in_array($Aterramiento, ['EXT', 'JUM', 'PDE', 'U01', 'UPV'])) {
-    $CorrienteAplicada = "0";
+    $CorrienteAplicada = "";
 } elseif (in_array($Aterramiento, ['P03', 'PEL'])) {
-    $CorrienteAplicada = "0|0|0";
+    $CorrienteAplicada = "||";
 } elseif (in_array($Aterramiento, ['TRA', 'TPF'])) {
-    $CorrienteAplicada = "0|0";
+    $CorrienteAplicada = "|";
 } elseif (in_array($Aterramiento, ['U03', 'UPF'])) {
-    $CorrienteAplicada = "0|0|0";
+    $CorrienteAplicada = "||";
 } elseif (in_array($Aterramiento, ['USA'])) {
-    $CorrienteAplicada = "0|0|0";
+    $CorrienteAplicada = "||";
 } elseif (in_array($Aterramiento, ['UMT'])) {
-    $CorrienteAplicada = "0|0|0";
+    $CorrienteAplicada = "||";
 } else {
     $CorrienteAplicada = 0;
 }
