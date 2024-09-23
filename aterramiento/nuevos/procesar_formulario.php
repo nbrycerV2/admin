@@ -222,19 +222,19 @@ if ($conn->query($sqlInsertAccOrdAterra) !== TRUE) {
 
     // Definir el valor de ValorMedido basado en TipoAterra
     if ($aterra === 'ENA') {
-        $ValorMedido = "0|0|0";
+        $ValorMedido = "||";
     } elseif (in_array($aterra, ['EXT', 'JUM', 'PDE', 'U01', 'UPV'])) {
-        $ValorMedido = "0";
+        $ValorMedido = "";
     } elseif (in_array($aterra, ['P03', 'PEL'])) {
-        $ValorMedido = "0|0|0";
+        $ValorMedido = "||";
     } elseif (in_array($aterra, ['TRA', 'TPF'])) {
-        $ValorMedido = "0|0";
+        $ValorMedido = "|";
     } elseif (in_array($aterra, ['U03', 'UPF'])) {
-        $ValorMedido = "0|0|0";
+        $ValorMedido = "||";
     } elseif (in_array($aterra, ['USA'])) {
-        $ValorMedido = "0|0|0";
+        $ValorMedido = "||";
     } elseif (in_array($aterra, ['UMT'])) {
-        $ValorMedido = "0|0|0";
+        $ValorMedido = "||";
     } else {
         $ValorMedido = 0;
     }
@@ -242,19 +242,19 @@ if ($conn->query($sqlInsertAccOrdAterra) !== TRUE) {
 
     // Definir el valor de  MaxPermisible basado en TipoAterra
     if ($aterra === 'ENA') {
-        $MaxPermisible = "0|0|0";
+        $MaxPermisible = "||";
     } elseif (in_array($aterra, ['EXT', 'JUM', 'PDE', 'U01', 'UPV'])) {
-        $MaxPermisible = "0";
+        $MaxPermisible = "";
     } elseif (in_array($aterra, ['P03', 'PEL'])) {
-        $MaxPermisible = "0|0|0";
+        $MaxPermisible = "||";
     } elseif (in_array($aterra, ['TRA', 'TPF'])) {
-        $MaxPermisible = "0|0";
+        $MaxPermisible = "|";
     } elseif (in_array($aterra, ['U03', 'UPF'])) {
-        $MaxPermisible = "0|0|0";
+        $MaxPermisible = "||";
     } elseif (in_array($aterra, ['USA'])) {
-        $MaxPermisible = "0|0|0";
+        $MaxPermisible = "||";
     } elseif (in_array($aterra, ['UMT'])) {
-        $MaxPermisible = "0|0|0";
+        $MaxPermisible = "||";
     } else {
         $MaxPermisible = 0;
     }

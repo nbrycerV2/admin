@@ -31,7 +31,7 @@ $MordazaTierraSX = ($aterra === 'ENA' || $aterra === 'EXT' || $aterra === 'JUM' 
     || $aterra === 'P03' || $aterra === 'PEL' || $aterra === 'TRA' || $aterra === 'TPF' || $aterra === 'U01'
     || $aterra === 'U03' || $aterra === 'UPF' || $aterra === 'UMT' || $aterra === 'UPV');
 // Para bloquear el campo Terminal de X segun el valor programado
-$TerminalX = ($aterra === 'ENA' || $aterra === 'EXT' || $aterra === 'JUM' || $aterra === 'PDE'
+$TerminalX = ($aterra === 'EXT' || $aterra === 'JUM' || $aterra === 'PDE'
     || $aterra === 'P03' || $aterra === 'PEL' || $aterra === 'TRA' || $aterra === 'TPF' || $aterra === 'U01'
     || $aterra === 'U03' || $aterra === 'UPF' || $aterra === 'UPV' || $aterra === 'USA' || $aterra === 'UMT');
 

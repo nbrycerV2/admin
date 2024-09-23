@@ -267,6 +267,7 @@ if ($conn->connect_error) {
                                             <option value="RG3368" <?php if ($data['MLinea'] == 'RG3368') echo 'selected'; ?>>RG3368</option>
                                             <option value="RG3363-1" <?php if ($data['MLinea'] == 'RG3363-1') echo 'selected'; ?>>RG3363-1</option>
                                             <option value="RG3403T" <?php if ($data['MLinea'] == 'RG3403T') echo 'selected'; ?>>RG3403T</option>
+                                            <option value="ATR11627-1" <?php if ($data['MLinea'] == 'ATR11627-1') echo 'selected'; ?>>ATR11627-1</option>
                                             <option value="ATR11627-2" <?php if ($data['MLinea'] == 'ATR11627-2') echo 'selected'; ?>>ATR11627-2</option>
                                             <option value="RC600-0065" <?php if ($data['MLinea'] == 'RC600-0065') echo 'selected'; ?>>RC600-0065</option>
                                             <option value="RG3367-1" <?php if ($data['MLinea'] == 'RG3367-1') echo 'selected'; ?>>RG3367-1</option>

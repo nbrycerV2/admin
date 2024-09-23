@@ -332,34 +332,25 @@ $json_details = json_encode($details);
                                             </tr>
                                             <tr>
                                                 <td>Vendedor</td>
-                                                <td><?php
-                                                    switch ($order['Vendedor']) {
-                                                        case 'CO':
-                                                            echo 'Carola Oshita';
-                                                            break;
-                                                        case 'BS':
-                                                            echo 'Beatriz Soto';
-                                                            break;
-                                                        case 'KA':
-                                                            echo 'Karina Kamida';
-                                                            break;
-                                                        case 'GP':
-                                                            echo 'Geraldine Palacios';
-                                                            break;
-                                                        case 'JL':
-                                                            echo 'Jennifer León';
-                                                            break;
-                                                        case 'CW':
-                                                            echo 'Cesar Wong';
-                                                            break;
-                                                        case 'PR':
-                                                            echo 'Pilar Ruiz';
-                                                            break;
-                                                        default:
-                                                            echo 'Desconocido';
-                                                            break;
-                                                    }
-                                                    ?></td>
+                                                <td>
+                                                    <?php
+                                                $ven = [
+        'CO' => 'Carola Oshita',
+        'BS' => 'Beatriz Soto',
+        'KA' => 'Karina Kamida',
+       'GP' => 'Geraldine Palacios',
+       'CL' => 'Carlos Lobaton',
+        'JL' => 'Jennifer León',
+        'CW' => 'Cesar Wong',
+        'DV' => 'Dante Valenzuela',
+        'AS' => 'Angel Santiago',
+        'RT' => 'Rosa Tipacti',
+        'SG' => 'Sandra Guillen',
+        'MC' => 'Miguel De La Cruz',
+        'PR' => 'Pilar Ruiz'
+    ];
+                                                 echo htmlspecialchars($ven[$order['Vendedor']]); ?>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Aterramiento</td>

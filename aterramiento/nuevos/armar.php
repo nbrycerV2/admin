@@ -304,6 +304,13 @@ $fechaHoraActual = date('Y-m-d\TH:i');
                                             -En caso de que no se encuentre el cliente, dar click <a href="../../empresas/index.php">aqui</a> primero.
                                         </div>
                                     </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ayuda">
+                                                Ayuda para Terminales
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -334,6 +341,7 @@ $fechaHoraActual = date('Y-m-d\TH:i');
                                             <option value="RG3368">RG3368</option>
                                             <option value="RG3363-1">RG3363-1</option>
                                             <option value="RG3403T">RG3403T</option>
+                                            <option value="ATR11627-1">ATR11627-1</option>
                                             <option value="ATR11627-2">ATR11627-2</option>
                                             <option value="RC600-0065">RC600-0065</option>
                                             <option value="RG3367-1">RG3367-1</option>
@@ -544,19 +552,19 @@ $fechaHoraActual = date('Y-m-d\TH:i');
                                 <div class="col-3">
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Estuche Chico</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstChico" value="">
+                                        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstChico" value="">
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Estuche Grande</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstGrande" value="">
+                                        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstGrande" value="">
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Estuche Metalico</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstMetalico" value="">
+                                        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstMetalico" value="">
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Estuche Pertigas</span>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstPertiga" value="">
+                                        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="EstPertiga" value="">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -575,7 +583,75 @@ $fechaHoraActual = date('Y-m-d\TH:i');
         </div>
         <!-- End of Main Content -->
 
+        <div id="ayuda" class="modal ">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Seleccion de Terminales Cembre</h4>
+                </div>
+                <div class="modal-body">
+                  <label>
+                    Utilizacion de terminales MTA de la marca Cembre segun seccion de cable
+                  </label>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Seccion de Cable</th>
+                        <th>Tipo de Terminal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>25 mm2<br>35 mm2<br>50 mm2</td>
+                        <td>MTA-50C</td>
+                      </tr>
+                      <tr>
+                        <td>70 mm2</td>
+                        <td>MTA-70C</td>
+                      </tr>
+                      <tr>
+                        <td>95 mm2</td>
+                        <td>MTA-120C</td>
+                      </tr>
+                    </tbody>
+                  </table>
 
+                  <label>
+                    Para el aterramiento enganche automatico se utilizan los terminales tipo ojal
+                  </label>
+
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Seccion de Cable</th>
+                        <th>Tipo de Terminal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>25 mm2</td>
+                        <td>A5-M8 Cañon Corto<br>2A5-M8 Cañon Largo</td>
+                      </tr>
+                      <tr>
+                        <td>35 mm2</td>
+                        <td>A7-M8 Cañon Corto<br>2A7-M8 Cañon Largo</td>
+                      </tr>
+                      <tr>
+                        <td>50 mm2</td>
+                        <td>A10-M10 Cañon Corto<br>2A10-M10 Cañon Largo</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <label>En caso se use el accesorio ATR 3641-1 (carrete) en la cola (B) se utilizara el terminal de tipo ojal de cañon corto y en la seccion A, se utilizara el terminal tipo ojal de cañon largo segun la seccion del cable</label>
+                  <img src="imagenes/modal_1.jpg">
+                  <label>En caso de use una mordaza de tierra en la cola se utilizara en el terminal MTA de cembre de acuerdo a la seccion del cable</label>
+                  <img src="imagenes/modal_2.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
     <!-- End of Content Wrapper -->
     </div>

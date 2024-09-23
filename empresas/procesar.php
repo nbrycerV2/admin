@@ -33,10 +33,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' and $funcion == "add_emp") {
             echo "Error al actualizar el registro: " . $conexion2->error;
         }
     } else {
-        // El RUC no existe, hacer un INSERT
-        $insert_sql = "INSERT INTO emp_main_lista (ruc, nombre, direccion, estado, dpto, distrito, provincia) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        // El RUC no existe, calcular el nuevo ID
+        $max_id_sql = "SELECT MAX(id) AS max_id FROM emp_main_lista";
+        $max_id_result = $conexion2->query($max_id_sql);
+        $row = $max_id_result->fetch_assoc();
+        $new_id = $row['max_id'] + 1;
+
+        // Realizar el INSERT con el nuevo ID
+        $insert_sql = "INSERT INTO emp_main_lista (id, ruc, nombre, direccion, estado, dpto, distrito, provincia) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $insert_stmt = $conexion2->prepare($insert_sql);
-        $insert_stmt->bind_param("sssssss", $ruc, $razonSocial, $direccion, $estado, $departamento, $distrito, $provincia);
+        $insert_stmt->bind_param("isssssss", $new_id, $ruc, $razonSocial, $direccion, $estado, $departamento, $distrito, $provincia);
 
         if ($insert_stmt->execute()) {
             echo "Registro insertado exitosamente.";

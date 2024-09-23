@@ -73,15 +73,15 @@ while ($fila = $resultado->fetch_assoc()) {
 </head>
 
 <style>
-.mi-tabla {
-    font-size: 13px;
-    /* Ajusta el tamaño según lo necesites */
-}
+    .mi-tabla {
+        font-size: 13px;
+        /* Ajusta el tamaño según lo necesites */
+    }
 
-.btn-sm2 {
-    font-size: 13px;
-    padding: 0.5px 3px;
-}
+    .btn-sm2 {
+        font-size: 13px;
+        padding: 0.5px 3px;
+    }
 </style>
 
 <datalist id="empresas">
@@ -205,6 +205,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                         <tr>
                                             <th>Acciones</th>
                                             <th>Id</th>
+                                            <th>Orden Lab</th>
                                             <th>Fecha</th>
                                             <th>Cliente</th>
                                             <th>Ruc</th>
@@ -219,6 +220,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                         <tr>
                                             <th>Acciones</th>
                                             <th>Id</th>
+                                            <th>Orden Lab</th>
                                             <th>Fecha</th>
                                             <th>Cliente</th>
                                             <th>Ruc</th>
@@ -284,92 +286,94 @@ while ($fila = $resultado->fetch_assoc()) {
     </script>
 
     <script>
-    $(document).ready(function() {
-        $("#dataTable").DataTable({
-            language: {
-                url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json",
-            },
-            "ajax": {
-                "url": "obtener_datos.php",
-                "method": "POST",
-                "data": ""
-            },
-            columns: [{
-                data: null,
-                render: function(data, type, row) {
-                    return '<a class="btn btn-primary btn-sm2" href="orden.php?id=' + row
-                        .id +
-                        '">Abrir</a>  <button class="btn btn-danger btn-sm2" onclick="borrar(' +
-                        row.id + ')">Borrar</button>';
+        $(document).ready(function() {
+            $("#dataTable").DataTable({
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json",
+                },
+                "ajax": {
+                    "url": "obtener_datos.php",
+                    "method": "POST",
+                    "data": ""
+                },
+                columns: [{
+                    data: null,
+                    render: function(data, type, row) {
+                        return '<a class="btn btn-primary btn-sm2" href="orden.php?id=' + row
+                            .id +
+                            '">Abrir</a>  <button class="btn btn-danger btn-sm2" onclick="borrar(' +
+                            row.id + ')">Borrar</button>';
 
-                }
-            }, {
-                "data": "id"
-            }, {
-                "data": "fecha"
-            }, {
-                "data": "cliente"
-            }, {
-                "data": "ruc"
-            }, {
-                "data": "equipo"
-            }, {
-                "data": "salida"
-            }, {
-                "data": null,
-                render: function(data, type, row) {
-                    if (row.estado == "Pendiente") {
-                        return "<span class='alert-warning'>Pendiente</span>"
                     }
-                    if (row.estado == "Entregado") {
-                        return "<span class='alert-success'>Entregado</span>"
+                }, {
+                    "data": "id"
+                }, {
+                    "data": "ordlab"
+                }, {
+                    "data": "fecha"
+                }, {
+                    "data": "cliente"
+                }, {
+                    "data": "ruc"
+                }, {
+                    "data": "equipo"
+                }, {
+                    "data": "salida"
+                }, {
+                    "data": null,
+                    render: function(data, type, row) {
+                        if (row.estado == "Pendiente") {
+                            return "<span class='alert-warning'>Pendiente</span>"
+                        }
+                        if (row.estado == "Entregado") {
+                            return "<span class='alert-success'>Entregado</span>"
+                        }
+                        if (row.estado == "Anulado") {
+                            return "<span class='alert-danger'>Anulado</span>"
+                        }
+                        if (row.estado == "Evaluado") {
+                            return "<span class='alert-primary'>Evaluado</span>"
+                        }
                     }
-                    if (row.estado == "Anulado") {
-                        return "<span class='alert-danger'>Anulado</span>"
-                    }
-                    if (row.estado == "Evaluado") {
-                        return "<span class='alert-primary'>Evaluado</span>"
-                    }
-                }
-            }, {
-                "data": "items"
-            }],
-            order: [
-                [1, 'desc']
-            ]
+                }, {
+                    "data": "items"
+                }],
+                order: [
+                    [2, 'desc']
+                ]
 
+            });
         });
-    });
     </script>
     <script>
-    function borrar(id) {
-        // Mostrar el modal de confirmación
-        $('#confirmarBorradoModal').modal('show');
+        function borrar(id) {
+            // Mostrar el modal de confirmación
+            $('#confirmarBorradoModal').modal('show');
 
-        // Cuando se hace clic en el botón de "Borrar" en el modal, enviar la solicitud al servidor para eliminar los datos
-        $('#confirmarBorradoBtn').on('click', function() {
-            $.ajax({
-                url: 'procesar.php?funcion=eliminar_orden',
-                type: 'POST',
-                data: {
-                    id: id
-                },
-                success: function(response) {
-                    // Manejar la respuesta del servidor si es necesario
-                    console.log(response);
-                    //recargo la pagina
-                    location.reload();
-                },
-                error: function(xhr, status, error) {
-                    // Manejar errores si los hay
-                    console.log(error);
-                }
+            // Cuando se hace clic en el botón de "Borrar" en el modal, enviar la solicitud al servidor para eliminar los datos
+            $('#confirmarBorradoBtn').on('click', function() {
+                $.ajax({
+                    url: 'procesar.php?funcion=eliminar_orden',
+                    type: 'POST',
+                    data: {
+                        id: id
+                    },
+                    success: function(response) {
+                        // Manejar la respuesta del servidor si es necesario
+                        console.log(response);
+                        //recargo la pagina
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Manejar errores si los hay
+                        console.log(error);
+                    }
+                });
+
+                // Ocultar el modal de confirmación
+                $('#confirmarBorradoModal').modal('hide');
             });
-
-            // Ocultar el modal de confirmación
-            $('#confirmarBorradoModal').modal('hide');
-        });
-    }
+        }
     </script>
 
     <!-- Modal -->

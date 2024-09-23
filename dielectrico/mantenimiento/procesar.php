@@ -902,7 +902,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
 
         $año = date('y');
         $mes = date('m');
-        //$serie_mantenimiento = generarSerie($año, $mes, 5);
+        //$serie_nuevo = generarSerie($año, $mes, 5);
         $serie_mantenimiento = generarSerie($año, $mes, 4);
 
         $sql_max_serie = "SELECT MAX(serie_banqueta) AS max_serie FROM orden_item_m";
@@ -946,7 +946,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
 
         $año = date('y');
         $mes = date('m');
-        //$serie_mantenimiento = generarSerie($año, $mes, 7);
+        //$serie_nuevo = generarSerie($año, $mes, 7);
         $serie_mantenimiento = generarSerie($año, $mes, 6);
 
         $sql_max_serie = "SELECT MAX(serie_pertiga) AS max_serie FROM orden_item_m";
@@ -990,7 +990,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "agrego_series") {
 
         $año = date('y');
         $mes = date('m');
-        //$serie_mantenimiento = generarSerie($año, $mes, 9);
+        //$serie_nuevo = generarSerie($año, $mes, 9);
         $serie_mantenimiento = generarSerie($año, $mes, 8);
 
         $sql_max_serie = "SELECT MAX(serie_manga) AS max_serie FROM orden_item_m";
@@ -2021,7 +2021,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and $funcion == "genero_pdf") {
                 <thead><tr><th>Pertiga</th><th>Estado físico</th><th>Resultado del ensayo</th><th>Resultado final</th></tr></thead>';
 
             for ($i = 0; $i < $talla; $i++) {
-                $html .= '<tbody><tr><td>Cuerpo ' . $i . '</td><td>Aprobado</td><td>Aprobado</td><td>Aprobado</td></tr>';
+                $html .= '<tbody><tr><td>Cuerpo ' . $i+1 . '</td><td>Aprobado</td><td>Aprobado</td><td>Aprobado</td></tr>';
             }
 
             $html .= '</table>';
